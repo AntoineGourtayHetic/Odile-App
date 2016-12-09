@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeviceMotion } from 'ionic-native';
+import { DeviceMotion, Shake } from 'ionic-native';
 import { NavController, Platform } from 'ionic-angular';
 import * as io from "socket.io-client";
 
@@ -17,32 +17,10 @@ export class HomePage {
   private moveCounter:number = 0;
   constructor (private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://10.33.1.82:1337";
+      this.socketHost = "http://10.33.1.82:1337"; // To change when the node server is in production
       this.socket = io(this.socketHost);
-      var subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
 
-        if(!this.lastX) {
-          this.lastX = acc.x;
-          this.lastY = acc.y;
-          this.lastZ = acc.z;
-          return;
-        }
-
-        let deltaX:number, deltaY:number, deltaZ:number;
-        deltaX = Math.abs(acc.x-this.lastX);
-        deltaY = Math.abs(acc.y-this.lastY);
-        deltaZ = Math.abs(acc.z-this.lastZ);
-
-        if(deltaX + deltaY + deltaZ > 3) {
-          this.moveCounter++;
-        } else {
-          this.moveCounter = Math.max(0, --this.moveCounter);
-        }
-
-        if(this.moveCounter > 2) {
-          console.log('SHAKE');
-          this.moveCounter=0;
-        }
+      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
 
         this.lastX = Math.round(acc.x * 100) / 100;
         this.lastY = Math.round(acc.y * 100) / 100;
@@ -50,6 +28,10 @@ export class HomePage {
 
         this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
         this.socket.emit('mobile:position', this.pos);
+      });
+
+      let watch = Shake.startWatch(60).subscribe(() => {
+        console.log("SHAKING DA BOOTY")
       });
 
     });
