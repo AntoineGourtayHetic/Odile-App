@@ -15,8 +15,4 @@ export class ElementChoicePage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello ElementChoicePage Page');
-  }
-
 }
