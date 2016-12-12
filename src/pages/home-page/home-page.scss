@@ -1,6 +1,28 @@
 page-home-page {
-  .navbar{}
-  .contenu{
-    background: #588fad;
+  .mainDiv {
+    position: relative;
+    background: linear-gradient(#FEF3F5, #F2F0D1);
+    height: 100%;
+    text-align: center;
+
+    .mainDiv__appName {
+      text-align: center;
+      font-family: Nickainley;
+      font-size: 35px;
+    }
+
+    .mainDiv__canvas{}
+
+    .mainDiv__connexion {
+      position: absolute;
+      right:10%;
+      bottom: 15%;
+    }
+    .mainDiv__seagull {
+      position: absolute;
+      width:50vw;
+      left: 0;
+      bottom: 0;
+    }
   }
 }
