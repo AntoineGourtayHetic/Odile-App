@@ -41,17 +41,13 @@ page-element-choice-cloud {
     }
 
     .bottomNavArrow__fill {
-        /*position: absolute; 
-        bottom: -70px;*/
         left: -20px;
         height: 150px;
         width: calc(100% + 100px);
         transform: skew(180deg, 180deg);
         background-color: white;
-        /*transform: rotate(-7deg);*/
         overflow: hidden;
         svg {
-          /*transform: rotate(7deg);*/
           position: absolute;
           bottom: -70px;
           left:0;
