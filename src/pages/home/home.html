@@ -11,4 +11,12 @@
   <p>Y : {{lastY}}</p>
   <p>Z : {{lastZ}}</p>
 
+  <form (ngSubmit)="submitCode()">
+    <ion-item>
+      <ion-label color="primary">Input code to get started</ion-label>
+      <ion-input [value]="key" [(ngModel)]="key" name="key" placeholder="Enter the KEY"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Send Code</button>
+  </form>
+
 </ion-content>
