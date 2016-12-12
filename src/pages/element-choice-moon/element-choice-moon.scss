@@ -7,6 +7,15 @@ page-element-choice-moon {
       font-family: Nickainley;
       font-size: 35px;
     }
+    .mainDiv__moon {
+      text-align: center;
+      .moon {
+        position: absolute;
+        top:20%;
+        left:25%;
+        width: 50vw;
+      }
+    }
   }
   .bottomNavArrow{
     background: #ffffff;
