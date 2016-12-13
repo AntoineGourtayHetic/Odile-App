@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
+import { DeviceMotion, Shake } from 'ionic-native';
+import * as io from "socket.io-client";
 
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 /*
@@ -13,16 +15,51 @@ import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-c
   templateUrl: 'home-page.html'
 })
 export class HomePagePage {
+  public lastX:number;
+  public lastY:number;
+  public lastZ:number;
+  private socketHost:string;
+  private socket:any;
+  private pos:Object;
+  private moveCounter:number = 0;
+  key:any;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(private navController: NavController, platform:Platform) {
+    platform.ready().then(() => {
+      this.socketHost = "oceania.herokuapp.com"; // To change when the node server is in production
+      this.socket = io(this.socketHost);
+
+      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+
+        this.lastX = Math.round(acc.x * 100) / 100;
+        this.lastY = Math.round(acc.y * 100) / 100;
+        this.lastZ = Math.round(acc.z * 100) / 100;
+
+        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+        this.socket.emit('mobile:position', this.pos);
+      });
+
+      let watch = Shake.startWatch(60).subscribe(() => {
+        console.log("SHAKING DA BOOTY")
+      });
+
+    });
+  }
 
   onConnected() {
     let element: any = document.getElementById("water");
     element.addClass("start");
   }
 
+<<<<<<< HEAD
+  submitCode() {
+    this.socket.emit('mobile:key', this.key);
+  }
+
+=======
   /*Dev function to test navigation*/
   nextPage() {
     this.navCtrl.push(ChooseChapterCloudPage);
   }
+>>>>>>> d22841dbde294dca6fda2a7182205e83e551fe39
 }
