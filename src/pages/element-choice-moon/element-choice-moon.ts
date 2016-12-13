@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
+
 /*
   Generated class for the ElementChoiceMoon page.
 
@@ -17,6 +19,19 @@ export class ElementChoiceMoonPage {
 
   ionViewDidLoad() {
     console.log('Hello ElementChoiceMoonPage Page');
+  }
+
+  nextPage(){
+    let btn = document.querySelector(".buttonArea");
+    console.log(btn);
+    let clicked = false;
+    let completed = false;
+
+    document.querySelector(".water-fill").classList.add("anim");
+    document.querySelector(".water-fill2").classList.add("anim");
+    clicked = true;
+    completed = true;
+    this.navCtrl.push(ChooseChapterCloudPage);
   }
 
 }

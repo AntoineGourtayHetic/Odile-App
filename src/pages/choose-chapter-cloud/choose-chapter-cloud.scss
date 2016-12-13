@@ -1,16 +1,26 @@
-page-element-choice-ground {
+page-choose-chapter-cloud {
+  font-family: Nickainley;
+
   .mainDiv{
     background: linear-gradient(#FEF3F5, #F2F0D1);
     height: 90%;
     .mainDiv__appName {
       text-align: center;
-      font-family: Nickainley;
       font-size: 35px;
     }
+
+    .mainDiv__explanation {
+      text-align: center;
+      margin-top: 5%;
+      font-size: 20px;
+    }
     .mainDiv__cloud {
-      position: relative;
-      top:20%;
-      left:5%;
+      text-align: center;
+      width: 50%;
+    }
+
+    .mainDiv__moon {
+      width:35%;
     }
   }
   .bottomNavArrow{
@@ -41,18 +51,18 @@ page-element-choice-ground {
     }
 
     .bottomNavArrow__fill {
-        left: -20px;
-        height: 150px;
-        width: calc(100% + 100px);
-        transform: skew(180deg, 180deg);
-        background-color: white;
-        overflow: hidden;
-        svg {
-          position: absolute;
-          bottom: -70px;
-          left:0;
-          opacity: 0.6;
-        }
+      left: -20px;
+      height: 150px;
+      width: calc(100% + 100px);
+      transform: skew(180deg, 180deg);
+      background-color: white;
+      overflow: hidden;
+      svg {
+        position: absolute;
+        bottom: -70px;
+        left:0;
+        opacity: 0.6;
+      }
 
       .water-fill, .water-fill2 {
         transition: 4s all ease;
@@ -77,6 +87,5 @@ page-element-choice-ground {
         100% { x: 0; }
       }
     }
-
   }
 }

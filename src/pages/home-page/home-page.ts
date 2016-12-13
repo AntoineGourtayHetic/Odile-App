@@ -3,6 +3,7 @@ import { NavController, Platform } from 'ionic-angular';
 import { DeviceMotion, Shake } from 'ionic-native';
 import * as io from "socket.io-client";
 
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 /*
   Generated class for the HomePage page.
 
@@ -50,8 +51,15 @@ export class HomePagePage {
     element.addClass("start");
   }
 
+<<<<<<< HEAD
   submitCode() {
     this.socket.emit('mobile:key', this.key);
   }
 
+=======
+  /*Dev function to test navigation*/
+  nextPage() {
+    this.navCtrl.push(ChooseChapterCloudPage);
+  }
+>>>>>>> d22841dbde294dca6fda2a7182205e83e551fe39
 }

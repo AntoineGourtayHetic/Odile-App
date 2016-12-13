@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
+import { ElementChoiceGroundPage } from '../element-choice-ground/element-choice-ground';
+
 /*
-  Generated class for the ElementChoiceGround page.
+  Generated class for the ChooseChapterGround page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-element-choice-ground',
-  templateUrl: 'element-choice-ground.html'
+  selector: 'page-choose-chapter-ground',
+  templateUrl: 'choose-chapter-ground.html'
 })
-export class ElementChoiceGroundPage {
+export class ChooseChapterGroundPage {
 
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello ElementChoiceGroundPage Page');
+    console.log('Hello ChooseChapterGroundPage Page');
   }
 
   nextPage(){
@@ -30,7 +31,12 @@ export class ElementChoiceGroundPage {
     document.querySelector(".water-fill2").classList.add("anim");
     clicked = true;
     completed = true;
-
-    this.navCtrl.push(ChooseChapterMoonPage);
+    //Laisser le temps à l'animation de se faire
+    setTimeout(this.pushPage(), 1200);
   }
+
+  pushPage(){
+    this.navCtrl.push(ElementChoiceGroundPage);
+  }
+
 }
