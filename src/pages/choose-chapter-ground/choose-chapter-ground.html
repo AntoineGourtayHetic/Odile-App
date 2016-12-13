@@ -1,9 +1,47 @@
 <!--
-  Generated template for the ChooseChapterGround page.
+  Generated template for the ChooseChapterCloud page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-content>
+  <div class="mainDiv">
+    <div class="mainDiv__appName">Odile</div>
+    <div class="mainDiv__explanation">Choisi le bon élément</div>
+    <div class="mainDiv__moon">
+      <img src="../../assets/images/lune.png" alt="">
+    </div>
+    <div class="mainDiv__cloud">
+      <img src="../../assets/images/nuage.png" alt="">
+    </div>
+    <div class="mainDiv_ground">
+      <img src="" alt="">
+    </div>
+  </div>
+  <!--botton navigation-->
+  <div class="bottomNavArrow">
+    <div class="bottomNavArrow__wrapper">
+      <div class="bottomNavArrow__content" (press)="nextPage()">
+        <img src="../../assets/images/arrow.png" alt="">
+      </div>
 
+      <div class="bottomNavArrow__fill">
+        <svg class="loading"  x="0px" y="0px" width="574.558px" height="220px" viewBox="0 0 574.558 120" enable-background="new 0 0 574.558 120" xml:space="preserve">
+          <pattern id="water" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+             <path fill="#80C9F6" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+          </pattern>
+          <rect class="water-fill" mask="url(#text_mask)" fill="url(#water)" x="-400" y="-50px" width="1600" height="0"/>
+        </svg>
+
+        <svg class="loading"  x="0px" y="0px" width="600px" height="220px" viewBox="0 0 574.558 120" enable-background="new 0 0 574.558 120" xml:space="preserve">
+          <pattern id="water2" width=".25" height="1.1" patternContentUnits="objectBoundingBox">
+            <path fill="#80C9D0" d="M0.25,1H0c0,0,0-0.659,0-0.916c0.083-0.303,0.158,0.334,0.25,0C0.25,0.327,0.25,1,0.25,1z"/>
+          </pattern>
+          <rect class="water-fill2" mask="url(#text_mask)" fill="url(#water2)" x="-400" y="-50px" width="1600" height="0"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
 </ion-content>
+

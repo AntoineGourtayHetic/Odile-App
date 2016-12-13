@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
+
 /*
   Generated class for the ElementChoiceMoon page.
 
@@ -29,6 +31,7 @@ export class ElementChoiceMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
     clicked = true;
     completed = true;
+    this.navCtrl.push(ChooseChapterCloudPage);
   }
 
 }

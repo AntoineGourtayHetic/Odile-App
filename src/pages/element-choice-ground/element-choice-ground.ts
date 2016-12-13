@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 /*
   Generated class for the ElementChoiceGround page.
 
@@ -30,6 +31,6 @@ export class ElementChoiceGroundPage {
     clicked = true;
     completed = true;
 
-    //this.navCtrl.push();
+    this.navCtrl.push(ChooseChapterMoonPage);
   }
 }

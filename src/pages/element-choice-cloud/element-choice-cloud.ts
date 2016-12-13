@@ -1,6 +1,7 @@
 import {Component, Output, EventEmitter, Directive} from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
 /*
   Generated class for the ElementChoiceCloud page.
 
@@ -33,7 +34,7 @@ export class ElementChoiceCloudPage {
     clicked = true;
     completed = true;
 
-    //this.navCtrl.push();
+    this.navCtrl.push(ChooseChapterGroundPage);
 
 //     btn.addEventListener("mouseup", function(){
 //       clicked = false;

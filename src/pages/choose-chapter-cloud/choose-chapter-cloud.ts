@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
 
 /*
   Generated class for the ChooseChapterCloud page.
@@ -29,7 +30,11 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill2").classList.add("anim");
     clicked = true;
     completed = true;
-    //this.navCtrl.push();
+    //Laisser le temps à l'animation de se faire
+    setTimeout(this.pushPage(), 1200);
   }
 
+  pushPage(){
+    this.navCtrl.push(ElementChoiceCloudPage);
+  }
 }
