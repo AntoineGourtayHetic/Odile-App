@@ -6,6 +6,9 @@ import { ElementChoiceCloudPage } from '../pages/element-choice-cloud/element-ch
 import { TabsPage } from '../pages/tabs/tabs';
 import {ElementChoiceMoonPage} from "../pages/element-choice-moon/element-choice-moon";
 import { ElementChoiceGroundPage } from '../pages/element-choice-ground/element-choice-ground';
+import { ChooseChapterCloudPage } from '../pages/choose-chapter-cloud/choose-chapter-cloud';
+import { ChooseChapterGroundPage } from '../pages/choose-chapter-ground/choose-chapter-ground';
+import { ChooseChapterMoonPage } from '../pages/choose-chapter-moon/choose-chapter-moon';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { ElementChoiceGroundPage } from '../pages/element-choice-ground/element-
     TabsPage,
     ElementChoiceCloudPage,
     ElementChoiceMoonPage,
-    ElementChoiceGroundPage
+    ElementChoiceGroundPage,
+    ChooseChapterCloudPage,
+    ChooseChapterGroundPage,
+    ChooseChapterMoonPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -26,7 +32,10 @@ import { ElementChoiceGroundPage } from '../pages/element-choice-ground/element-
     TabsPage,
     ElementChoiceCloudPage,
     ElementChoiceMoonPage,
-    ElementChoiceGroundPage
+    ElementChoiceGroundPage,
+    ChooseChapterCloudPage,
+    ChooseChapterGroundPage,
+    ChooseChapterMoonPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
