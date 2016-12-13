@@ -1,19 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
 import { DeviceMotion, Shake } from 'ionic-native';
+import { NavController, Platform } from 'ionic-angular';
 import * as io from "socket.io-client";
 
-/*
-  Generated class for the HomePage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  selector: 'page-home-page',
-  templateUrl: 'home-page.html'
+  selector: 'page-home',
+  templateUrl: 'home.html'
 })
-export class HomePagePage {
+export class HomePage {
   public lastX:number;
   public lastY:number;
   public lastZ:number;
@@ -23,9 +17,9 @@ export class HomePagePage {
   private moveCounter:number = 0;
   key:any;
 
-  constructor(private navController: NavController, platform:Platform) {
+  constructor (private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "oceania.herokuapp.com"; // To change when the node server is in production
+      this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -43,11 +37,7 @@ export class HomePagePage {
       });
 
     });
-  }
 
-  onConnected() {
-    let element: any = document.getElementById("water");
-    element.addClass("start");
   }
 
   submitCode() {

@@ -37,7 +37,10 @@
 
     <div class="mainDiv__connexion">Connectez vous au site<br>sur votre ordinateur</div>
     <!-- ON CONNECTION DONE, ADD CLASS "START" TO THE BODY FOR THE ANIMATION-->
-
+    <button ion-button type="submit" block (click)="submitCode()">Send Code</button>
+    <p>{{lastX}}</p>
+    <p>{{lastY}}</p>
+    <p>{{lastZ}}</p>
 
     <div class="mainDiv__seagull">
       <img src="../../assets/images/mouette.png" alt="">
