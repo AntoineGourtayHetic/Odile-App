@@ -22,7 +22,7 @@ export class HomePage {
       this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
-      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+      let subscription = DeviceMotion.watchAcceleration({frequency:1000}).subscribe(acc => {
 
         this.lastX = Math.round(acc.x * 100) / 100;
         this.lastY = Math.round(acc.y * 100) / 100;
