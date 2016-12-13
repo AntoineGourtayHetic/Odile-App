@@ -19,4 +19,17 @@ export class ChooseChapterCloudPage {
     console.log('Hello ChooseChapterCloudPage Page');
   }
 
+  nextPage(){
+    let btn = document.querySelector(".buttonArea");
+    console.log(btn);
+    let clicked = false;
+    let completed = false;
+
+    document.querySelector(".water-fill").classList.add("anim");
+    document.querySelector(".water-fill2").classList.add("anim");
+    clicked = true;
+    completed = true;
+    //this.navCtrl.push();
+  }
+
 }

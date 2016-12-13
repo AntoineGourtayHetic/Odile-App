@@ -33,6 +33,8 @@ export class ElementChoiceCloudPage {
     clicked = true;
     completed = true;
 
+    //this.navCtrl.push();
+
 //     btn.addEventListener("mouseup", function(){
 //       clicked = false;
 //       if (completed == false){

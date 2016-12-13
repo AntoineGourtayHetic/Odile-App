@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 /*
   Generated class for the HomePage page.
 
@@ -18,5 +19,10 @@ export class HomePagePage {
   onConnected() {
     let element: any = document.getElementById("water");
     element.addClass("start");
+  }
+
+  /*Dev function to test navigation*/
+  nextPage() {
+    this.navCtrl.push(ChooseChapterCloudPage);
   }
 }

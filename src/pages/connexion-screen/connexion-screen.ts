@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { HomePagePage } from '../home-page/home-page';
 
 /*
   Generated class for the ConnexionScreen page.
@@ -13,10 +14,13 @@ import { NavController } from 'ionic-angular';
 })
 export class ConnexionScreenPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
 
-  ionViewDidLoad() {
-    console.log('Hello ConnexionScreenPage Page');
+  }
+
+  /*Open a new page*/
+  nextPage(){
+    this.navCtrl.push(HomePagePage);
   }
 
 }
