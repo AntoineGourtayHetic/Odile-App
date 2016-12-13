@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Output, EventEmitter, Directive} from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 /*
@@ -11,60 +11,62 @@ import { NavController } from 'ionic-angular';
   selector: 'page-element-choice-cloud',
   templateUrl: 'element-choice-cloud.html'
 })
+
 export class ElementChoiceCloudPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
+  }
 
   ionViewDidLoad() {
     console.log('Hello ElementChoiceCloudPage Page');
-
-    function nextButton() { 
-    // A ADAPTER EN TYPE SCRIPT, CA NE MARCHE PAS .........
-    	var btn = document.querySelector(".buttonArea");
-    	console.log(btn);
-	    var clicked = false;
-	    var completed = false; 
-
-	      btn.addEventListener("mousedown", function(){
-	        document.querySelector(".water-fill").classList.add("anim");
-	        document.querySelector(".water-fill2").classList.add("anim");
-	        clicked = true;
-	      });
-	      btn.addEventListener("mouseup", function(){
-	        clicked = false;
-	        if (completed == false){
-	          document.querySelector(".water-fill").classList.remove("anim");
-	          document.querySelector(".water-fill2").classList.remove("anim");
-	        }
-	      });
-	      document.querySelector(".water-fill").addEventListener('webkitTransitionEnd', function(){
-	        if (clicked){
-	          completed = true;
-	          console.log('HERE YOU SWITCH PAGE ON PHONE AND DESKTOP -> NEXT CHAPTER');
-	        }
-	      })
-    }    
-
   }
 
-}
+  nextButton() {
+    // A ADAPTER EN TYPE SCRIPT, CA NE MARCHE PAS .........
+    let btn = document.querySelector(".buttonArea");
+    console.log(btn);
+    let clicked = false;
+    let completed = false;
 
+    document.querySelector(".water-fill").classList.add("anim");
+    document.querySelector(".water-fill2").classList.add("anim");
+    clicked = true;
+    completed = true;
 
-class Tracker {
-    count = 0;
-    constructor() {
-        window.addEventListener("mousedown", this.mouseDown);
-        window.addEventListener("mouseup", this.mouseUp);
-    }
-    mouseDown = (ev: MouseEvent) => {
-        window.addEventListener("mousemove", this.mouseMove);
-    }
-    mouseUp = (ev: MouseEvent) => {
-        window.removeEventListener("mousemove", this.mouseMove);
-    }
-    mouseMove = (ev: MouseEvent) => {
-        this.count++;
-        console.log(this.count);
-    }
+//     btn.addEventListener("mouseup", function(){
+//       clicked = false;
+//       if (completed == false){
+//         document.querySelector(".water-fill").classList.remove("anim");
+//         document.querySelector(".water-fill2").classList.remove("anim");
+//       }
+//     });
+//     document.querySelector(".water-fill").addEventListener('webkitTransitionEnd', function(){
+//       if (clicked){
+//         completed = true;
+//         console.log('HERE YOU SWITCH PAGE ON PHONE AND DESKTOP -> NEXT CHAPTER');
+//       }
+//     })
+//   }
+//
+// }
+  }
 }
-new Tracker();
+//
+// class Tracker {
+//     count = 0;
+//     constructor() {
+//         window.addEventListener("mousedown", this.mouseDown);
+//         window.addEventListener("mouseup", this.mouseUp);
+//     }
+//     mouseDown = (ev: MouseEvent) => {
+//         window.addEventListener("mousemove", this.mouseMove);
+//     }
+//     mouseUp = (ev: MouseEvent) => {
+//         window.removeEventListener("mousemove", this.mouseMove);
+//     }
+//     mouseMove = (ev: MouseEvent) => {
+//         this.count++;
+//         console.log(this.count);
+//     }
+// }
+// new Tracker();

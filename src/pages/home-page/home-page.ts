@@ -15,8 +15,8 @@ export class HomePagePage {
 
   constructor(public navCtrl: NavController) {}
 
-  ionViewDidLoad() {
-    console.log('Hello HomePagePage Page');
+  onConnected() {
+    let element: any = document.getElementById("water");
+    element.addClass("start");
   }
-
 }
