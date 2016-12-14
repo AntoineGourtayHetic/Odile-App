@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { DeviceMotion, Shake } from 'ionic-native';
 import * as io from "socket.io-client";
-
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 /*
   Generated class for the HomePage page.
@@ -24,9 +23,9 @@ export class HomePagePage {
   private moveCounter:number = 0;
   key:any;
 
-  constructor(private navController: NavController, platform:Platform) {
+  constructor(private navCtrl: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "oceania.herokuapp.com"; // To change when the node server is in production
+      this.socketHost = "http:/localhost:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -50,16 +49,11 @@ export class HomePagePage {
     let element: any = document.getElementById("water");
     element.addClass("start");
   }
-
-<<<<<<< HEAD
   submitCode() {
     this.socket.emit('mobile:key', this.key);
   }
-
-=======
   /*Dev function to test navigation*/
   nextPage() {
     this.navCtrl.push(ChooseChapterCloudPage);
   }
->>>>>>> d22841dbde294dca6fda2a7182205e83e551fe39
 }

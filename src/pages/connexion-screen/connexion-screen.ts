@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePagePage } from '../home-page/home-page';
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 
 /*
   Generated class for the ConnexionScreen page.
@@ -21,6 +22,12 @@ export class ConnexionScreenPage {
   /*Open a new page*/
   nextPage(){
     this.navCtrl.push(HomePagePage);
+  }
+
+  /*Open a new page*/
+
+  toCloudChapter(){
+    this.navCtrl.push(ChooseChapterCloudPage);
   }
 
 }

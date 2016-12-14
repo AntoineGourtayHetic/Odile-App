@@ -19,7 +19,7 @@ export class HomePage {
 
   constructor (private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
+      this.socketHost = "http://localhost:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:1000}).subscribe(acc => {

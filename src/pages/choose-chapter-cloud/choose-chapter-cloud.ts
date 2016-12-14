@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
+import * as io from "socket.io-client";
 
 /*
   Generated class for the ChooseChapterCloud page.
@@ -14,10 +15,20 @@ import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-c
 })
 export class ChooseChapterCloudPage {
 
-  constructor(public navCtrl: NavController) {}
+  private selectedAnswer:string;
+  private socketHost:string;
+  private socket:any;
+
+
+  constructor(public navCtrl: NavController, public platform: Platform) {
+    this.socketHost = "http://localhost:1337/";
+    this.socket = io(this.socketHost);
+  }
+
 
   ionViewDidLoad() {
     console.log('Hello ChooseChapterCloudPage Page');
+
   }
 
   nextPage(){
@@ -34,7 +45,16 @@ export class ChooseChapterCloudPage {
     setTimeout(this.pushPage(), 1200);
   }
 
-  pushPage(){
+  pushPage() {
     this.navCtrl.push(ElementChoiceCloudPage);
   }
+
+  selectAnswer(e) {
+
+    let answer = e.target.classList[1].split('-')[1];
+
+    this.socket.emit('answer-select', answer);
+
+  }
+
 }

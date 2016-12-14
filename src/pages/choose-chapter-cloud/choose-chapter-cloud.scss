@@ -4,6 +4,10 @@ page-choose-chapter-cloud {
   .mainDiv{
     background: linear-gradient(#FEF3F5, #F2F0D1);
     height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .mainDiv__appName {
       text-align: center;
       font-size: 35px;
@@ -14,15 +18,44 @@ page-choose-chapter-cloud {
       margin-top: 5%;
       font-size: 20px;
     }
-    .mainDiv__cloud {
-      text-align: center;
-      width: 50%;
+
+    .answers-container {
+
+      width: 100vw;
+      height: 68vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .answer {
+        width: 100vw;
+        height: 20vh;
+        border-radius: 25%;
+        background-color: #FFFFFF;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+      }
+
+      .answer-moon {
+        background-image: url(../assets/images/lune.png);
+      }
+
+      .answer-mouette {
+        background-image: url(../assets/images/mouette.png);
+      }
+
+      .answer-cloud {
+        background-image: url(../assets/images/nuage.png);
+      }
+
     }
 
-    .mainDiv__moon {
-      width:35%;
-    }
   }
+
   .bottomNavArrow{
     position:absolute;
     bottom: 0;
