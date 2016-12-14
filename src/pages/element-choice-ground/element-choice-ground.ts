@@ -23,30 +23,24 @@ export class ElementChoiceGroundPage {
 
   chapitreSuivant(){
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
-
-    containerTexte.innerHTML = "Aller au chapitre 3";
     containerImage.style.display = "block" ;
-    containerTexte.classList.remove('precedent');
-    containerTexte.classList.add('suivant');
+    containerImage.classList.remove('precedent');
+    containerImage.classList.add('suivant');
 
   }
 
   chapitrePrecedent(){
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
-
-    containerTexte.innerHTML = 'Aller au chapitre 1';
     containerImage.style.display = "block";
-    containerTexte.classList.remove('suivant');
-    containerTexte.classList.add('precedent');
+    containerImage.classList.remove('suivant');
+    containerImage.classList.add('precedent');
   }
 
   nextPage(){
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
 
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
