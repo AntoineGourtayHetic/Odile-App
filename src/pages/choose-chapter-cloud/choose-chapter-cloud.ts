@@ -47,11 +47,6 @@ export class ChooseChapterCloudPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('Hello ChooseChapterCloudPage Page');
-
-  }
-
   closePanel(){
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];

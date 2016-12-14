@@ -24,8 +24,15 @@ export class ChooseChapterGroundPage {
     this.socket = io(this.socketHost);
   }
 
-  ionViewDidLoad() {
-    console.log('Hello ChooseChapterGroundPage Page');
+  closePanel(){
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+
+    zoneChangeGame.style.display = 'none';
+    zoneChoixElement.style.display = 'block';
+    zoneChoixElement.style.height = '50vh';
+    containerImage.style.display = 'none';
   }
 
   chapitreSuivant() {
