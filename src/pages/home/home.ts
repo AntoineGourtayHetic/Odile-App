@@ -19,7 +19,7 @@ export class HomePage {
 
   constructor (private navController:NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://10.31.2.40:1337/"; // To change when the node server is in production
+      this.socketHost = "http://192.168.1.97:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:1000}).subscribe(acc => {
@@ -28,12 +28,12 @@ export class HomePage {
         this.lastY = Math.round(acc.y * 100) / 100;
         this.lastZ = Math.round(acc.z * 100) / 100;
 
-        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ, key: localStorage.getItem("key")};
         this.socket.emit('mobile:position', this.pos);
       });
 
       let watch = Shake.startWatch(60).subscribe(() => {
-        console.log("SHAKING DA BOOTY")
+        this.socket.emit('mobile:shake', localStorage.setItem("key", this.key));
       });
 
     });
@@ -46,7 +46,11 @@ export class HomePage {
   }
 
   changePage(page) {
-    this.socket.emit('mobile:router', page);
+    let sending = {
+      page: page,
+      key: localStorage.getItem("key")
+    }
+    this.socket.emit('mobile:router', sending);
   }
 
 }
