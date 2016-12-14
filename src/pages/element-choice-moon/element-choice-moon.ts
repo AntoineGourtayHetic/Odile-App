@@ -53,9 +53,9 @@ export class ElementChoiceMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
-      this.navCtrl.push(ChooseChapterCloudPage);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else if (containerTexte.classList.contains('precedent')){
-      this.navCtrl.push(ChooseChapterGroundPage);
+      this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else {
       //Do nothing
     }

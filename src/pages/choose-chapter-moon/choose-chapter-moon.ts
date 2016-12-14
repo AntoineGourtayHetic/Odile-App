@@ -27,7 +27,7 @@ export class ChooseChapterMoonPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
-    containerTexte.innerHTML = "Aller au chapitre 2";
+    containerTexte.innerHTML = "Aller au chapitre 1";
     containerImage.style.display = "block" ;
     containerTexte.classList.remove('precedent');
     containerTexte.classList.add('suivant');
@@ -38,7 +38,7 @@ export class ChooseChapterMoonPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
-    containerTexte.innerHTML = 'Aller au chapitre 3';
+    containerTexte.innerHTML = 'Aller au chapitre 2';
     containerImage.style.display = "block";
     containerTexte.classList.remove('suivant');
     containerTexte.classList.add('precedent');
@@ -54,9 +54,9 @@ export class ChooseChapterMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
-      this.navCtrl.push(ChooseChapterCloudPage);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else if (containerTexte.classList.contains('precedent')){
-      this.navCtrl.push(ChooseChapterGroundPage);
+      this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else {
       //Valider réponse
     }

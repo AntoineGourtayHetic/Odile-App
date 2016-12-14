@@ -46,7 +46,7 @@ export class ChooseChapterGroundPage {
     containerTexte.classList.add('precedent');
   }
 
-  nextPage(){
+  nextPage() {
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
 
@@ -55,10 +55,10 @@ export class ChooseChapterGroundPage {
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
     //Laisser le temps à l'animation de se faire
-    if (containerTexte.classList.contains('suivant')){
-      this.navCtrl.push(ChooseChapterMoonPage);
-    } else if (containerTexte.classList.contains('precedent')){
-      this.navCtrl.push(ChooseChapterCloudPage);
+    if (containerTexte.classList.contains('suivant')) {
+      this.navCtrl.setRoot(ChooseChapterMoonPage);
+    } else if (containerTexte.classList.contains('precedent')) {
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else {
       //Valider réponse
     }
