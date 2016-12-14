@@ -14,14 +14,10 @@
       <img src="../../assets/images/navRight.svg" alt="">
     </div>
     <div class="mainDiv__explanation">Choisi le bon élément</div>
-    <div class="mainDiv__moon">
-      <img src="../../assets/images/lune.png" alt="">
-    </div>
-    <div class="mainDiv__cloud">
-      <img src="../../assets/images/nuage.png" alt="">
-    </div>
-    <div class="mainDiv_ground">
-      <img src="" alt="">
+    <div class="answers-container">
+      <div class="answer answer-moon" (click)="selectAnswer($event)"></div>
+      <div class="answer answer-mouette" (click)="selectAnswer($event)"></div>
+      <div class="answer answer-cloud" (click)="selectAnswer($event)"></div>
     </div>
   </div>
   <!--botton navigation-->

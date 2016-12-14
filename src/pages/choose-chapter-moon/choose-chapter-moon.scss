@@ -31,13 +31,41 @@ page-choose-chapter-moon {
       text-align: center;
       font-size: 20px;
     }
-    .mainDiv__cloud {
-      text-align: center;
-      width: 50%;
-    }
 
-    .mainDiv__moon {
-      width:35%;
+    .answers-container {
+      display: block;
+      width: 100vw;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .answer {
+        width: 100vw;
+        height: 20vh;
+        border-radius: 25%;
+        background-color: #FFFFFF;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top:5%;
+
+      }
+
+      .answer-moon {
+        background-image: url(../../assets/images/lune.png);
+      }
+
+      .answer-mouette {
+        background-image: url(../../assets/images/mouette.png);
+      }
+
+      .answer-cloud {
+        background-image: url(../../assets/images/nuage.png);
+      }
+
     }
   }
   .bottomNavArrow{
