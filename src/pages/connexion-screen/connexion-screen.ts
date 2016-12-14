@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { HomePagePage } from '../home-page/home-page';
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
@@ -16,22 +16,22 @@ import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-c
 })
 export class ConnexionScreenPage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public platform: Platform) {
 
   }
 
   /*Open a new page*/
-  nextPage(){
+  nextPage() {
     this.navCtrl.push(HomePagePage);
   }
 
   /*Open a new page*/
 
-  toCloudQuestion(){
+  toCloudQuestion() {
     this.navCtrl.push(ChooseChapterCloudPage);
   }
 
-  toCloudGame(){
+  toCloudGame() {
     this.navCtrl.push(ElementChoiceCloudPage);
   }
 

@@ -1,6 +1,7 @@
 import {Component, Output, EventEmitter, Directive} from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { NavController, Platform } from 'ionic-angular';
+import * as io from "socket.io-client";
+import { DeviceMotion, Shake } from 'ionic-native';
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
 import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 /*
@@ -16,7 +17,32 @@ import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moo
 
 export class ElementChoiceCloudPage {
 
-  constructor(public navCtrl: NavController) {
+  public lastX:number;
+  public lastY:number;
+  public lastZ:number;
+  private selectedAnswer:string;
+  private socketHost:string;
+  private socket:any;
+  private pos:Object;
+
+  constructor(public navCtrl: NavController, public platform: Platform) {
+
+    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socket = io(this.socketHost);
+
+    let subscription = DeviceMotion.watchAcceleration({frequency:400}).subscribe(acc => {
+
+      this.lastX = Math.round(acc.x * 100) / 100;
+      this.lastY = Math.round(acc.y * 100) / 100;
+      this.lastZ = Math.round(acc.z * 100) / 100;
+
+
+      this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+
+      this.socket.emit('mobile:move', this.pos);
+
+    });
+
   }
 
   ionViewDidLoad() {
@@ -25,30 +51,24 @@ export class ElementChoiceCloudPage {
 
   chapitreSuivant(){
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
-
-    containerTexte.innerHTML = "Aller au chapitre 3";
     containerImage.style.display = "block" ;
-    containerTexte.classList.remove('precedent');
-    containerTexte.classList.add('suivant');
+    containerImage.classList.remove('precedent');
+    containerImage.classList.add('suivant');
 
   }
 
   chapitrePrecedent(){
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
-
-    containerTexte.innerHTML = 'Aller au chapitre 2';
     containerImage.style.display = "block";
-    containerTexte.classList.remove('suivant');
-    containerTexte.classList.add('precedent');
+    containerImage.classList.remove('suivant');
+    containerImage.classList.add('precedent');
   }
 
   nextPage(){
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
 
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");

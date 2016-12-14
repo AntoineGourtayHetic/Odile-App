@@ -42,7 +42,6 @@ export class HomePagePage {
 
       let watch = Shake.startWatch(40).subscribe(() => {
         this.socket.emit('mobile:shake', 'user shake');
-        alert('user shake');
       });
 
     });

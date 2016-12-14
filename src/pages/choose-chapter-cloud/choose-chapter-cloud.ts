@@ -52,25 +52,20 @@ export class ChooseChapterCloudPage {
 
   }
 
-  chapitreSuivant(){
+  chapitreSuivant() {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
-    containerTexte.innerHTML = "Aller au chapitre 2";
     containerImage.style.display = "block" ;
-    containerTexte.classList.remove('precedent');
-    containerTexte.classList.add('suivant');
+    containerImage.classList.remove('precedent');
+    containerImage.classList.add('suivant');
 
   }
 
-  chapitrePrecedent(){
+  chapitrePrecedent() {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
-
-    containerTexte.innerHTML = 'Aller au chapitre 3';
     containerImage.style.display = "block";
-    containerTexte.classList.remove('suivant');
-    containerTexte.classList.add('precedent');
+    containerImage.classList.remove('suivant');
+    containerImage.classList.add('precedent');
   }
 
   //When clicked on the bottom button
@@ -78,7 +73,7 @@ export class ChooseChapterCloudPage {
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
 
-    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
@@ -90,7 +85,6 @@ export class ChooseChapterCloudPage {
     } else {
       //Valider réponse
     }
-    //Laisser le temps à l'animation de se faire
   }
 
   pushPage() {
