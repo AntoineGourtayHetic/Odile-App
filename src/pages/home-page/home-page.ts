@@ -23,9 +23,9 @@ export class HomePagePage {
   private moveCounter:number = 0;
   key:any;
 
-  constructor(private navCtrl: NavController, platform:Platform) {
+  constructor(private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http:/localhost:1337/"; // To change when the node server is in production
+      this.socketHost = "http://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -35,7 +35,9 @@ export class HomePagePage {
         this.lastZ = Math.round(acc.z * 100) / 100;
 
         this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
-        this.socket.emit('mobile:position', this.pos);
+
+        this.socket.emit('mobile:position', 'rrr');
+
       });
 
       let watch = Shake.startWatch(60).subscribe(() => {
@@ -54,6 +56,6 @@ export class HomePagePage {
   }
   /*Dev function to test navigation*/
   nextPage() {
-    this.navCtrl.push(ChooseChapterCloudPage);
+    this.navController.push(ChooseChapterCloudPage);
   }
 }

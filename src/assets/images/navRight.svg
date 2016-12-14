@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 48 24">
+  <defs>
+    <clipPath id="clip-path" transform="translate(5 5)">
+      <path d="M34.59,8l-4.29,4.29a1,1,0,1,0,1.41,1.41l6-6a1,1,0,0,0,0-1.41l-6-6a1,1,0,1,0-1.41,1.41L34.59,6H1A1,1,0,0,0,1,8H34.59Z" style="fill: none"/>
+    </clipPath>
+    <clipPath id="clip-path-2" transform="translate(5 5)">
+      <rect x="-745" y="-427" width="1373" height="991" style="fill: none"/>
+    </clipPath>
+  </defs>
+  <title>Vector Smart Object</title>
+  <g style="clip-path: url(#clip-path)">
+    <g style="clip-path: url(#clip-path-2)">
+      <rect width="48" height="24" style="fill: #000"/>
+    </g>
+  </g>
+</svg>

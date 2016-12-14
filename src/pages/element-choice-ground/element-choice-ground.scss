@@ -7,7 +7,24 @@ page-element-choice-ground {
       font-family: Nickainley;
       font-size: 35px;
     }
-    .mainDiv__cloud {
+    .mainDiv__navLeft {
+      display: inline-block;
+      width: 49%;
+      img {
+        width:50%;
+      }
+    }
+
+    .mainDiv__navRight {
+      display: inline-block;
+      width:49%;
+      text-align: right;
+      img {
+        width:50%;
+      }
+    }
+
+    .mainDiv__ground {
       position: relative;
       top:20%;
       left:5%;

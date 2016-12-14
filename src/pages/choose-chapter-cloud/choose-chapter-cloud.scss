@@ -9,13 +9,30 @@ page-choose-chapter-cloud {
     align-items: center;
 
     .mainDiv__appName {
+      width:100%;
       text-align: center;
       font-size: 35px;
     }
 
+    .mainDiv__navLeft {
+      display: inline-block;
+      width: 49%;
+      img {
+        width:50%;
+      }
+    }
+
+    .mainDiv__navRight {
+      display: inline-block;
+      width:49%;
+      text-align: right;
+      img {
+        width:50%;
+      }
+    }
+
     .mainDiv__explanation {
       text-align: center;
-      margin-top: 5%;
       font-size: 20px;
     }
 
@@ -77,7 +94,11 @@ page-choose-chapter-cloud {
       top: 30%;
       left:45%;
       transform: rotate(5deg);
+      .bottomNavArrow__content__pageName {
+
+      }
       img {
+        display:none;
         width:10vw;
       }
       z-index:5;
