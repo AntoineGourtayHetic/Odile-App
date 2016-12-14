@@ -2,6 +2,7 @@ import {Component, Output, EventEmitter, Directive} from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
+import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 /*
   Generated class for the ElementChoiceCloud page.
 
@@ -22,54 +23,43 @@ export class ElementChoiceCloudPage {
     console.log('Hello ElementChoiceCloudPage Page');
   }
 
-  nextButton() {
-    // A ADAPTER EN TYPE SCRIPT, CA NE MARCHE PAS .........
+  chapitreSuivant(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = "Aller au chapitre 3";
+    containerImage.style.display = "block" ;
+    containerTexte.classList.remove('precedent');
+    containerTexte.classList.add('suivant');
+
+  }
+
+  chapitrePrecedent(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = 'Aller au chapitre 2';
+    containerImage.style.display = "block";
+    containerTexte.classList.remove('suivant');
+    containerTexte.classList.add('precedent');
+  }
+
+  nextPage(){
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
-    let clicked = false;
-    let completed = false;
+
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
-    clicked = true;
-    completed = true;
 
-    this.navCtrl.push(ChooseChapterGroundPage);
-
-//     btn.addEventListener("mouseup", function(){
-//       clicked = false;
-//       if (completed == false){
-//         document.querySelector(".water-fill").classList.remove("anim");
-//         document.querySelector(".water-fill2").classList.remove("anim");
-//       }
-//     });
-//     document.querySelector(".water-fill").addEventListener('webkitTransitionEnd', function(){
-//       if (clicked){
-//         completed = true;
-//         console.log('HERE YOU SWITCH PAGE ON PHONE AND DESKTOP -> NEXT CHAPTER');
-//       }
-//     })
-//   }
-//
-// }
+    if (containerTexte.classList.contains('suivant')){
+      this.navCtrl.push(ChooseChapterGroundPage);
+    } else if (containerTexte.classList.contains('precedent')){
+      this.navCtrl.push(ChooseChapterMoonPage);
+    } else {
+      //Do nothing
+    }
+    //Laisser le temps à l'animation de se faire
   }
 }
-//
-// class Tracker {
-//     count = 0;
-//     constructor() {
-//         window.addEventListener("mousedown", this.mouseDown);
-//         window.addEventListener("mouseup", this.mouseUp);
-//     }
-//     mouseDown = (ev: MouseEvent) => {
-//         window.addEventListener("mousemove", this.mouseMove);
-//     }
-//     mouseUp = (ev: MouseEvent) => {
-//         window.removeEventListener("mousemove", this.mouseMove);
-//     }
-//     mouseMove = (ev: MouseEvent) => {
-//         this.count++;
-//         console.log(this.count);
-//     }
-// }
-// new Tracker();

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
-
+import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
+import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 /*
   Generated class for the ChooseChapterCloud page.
 
@@ -14,27 +15,52 @@ import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-c
 })
 export class ChooseChapterCloudPage {
 
+
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
     console.log('Hello ChooseChapterCloudPage Page');
   }
 
+  chapitreSuivant(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = "Aller au chapitre 2";
+    containerImage.style.display = "block" ;
+    containerTexte.classList.remove('precedent');
+    containerTexte.classList.add('suivant');
+
+  }
+
+  chapitrePrecedent(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = 'Aller au chapitre 3';
+    containerImage.style.display = "block";
+    containerTexte.classList.remove('suivant');
+    containerTexte.classList.add('precedent');
+  }
+
+  //When clicked on the bottom button
   nextPage(){
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
-    let clicked = false;
-    let completed = false;
+
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
-    clicked = true;
-    completed = true;
+
+    if (containerTexte.classList.contains('suivant')){
+      this.navCtrl.push(ChooseChapterGroundPage);
+    } else if (containerTexte.classList.contains('precedent')){
+      this.navCtrl.push(ChooseChapterMoonPage);
+    } else {
+      //Valider réponse
+    }
     //Laisser le temps à l'animation de se faire
-    setTimeout(this.pushPage(), 1200);
   }
 
-  pushPage(){
-    this.navCtrl.push(ElementChoiceCloudPage);
-  }
 }

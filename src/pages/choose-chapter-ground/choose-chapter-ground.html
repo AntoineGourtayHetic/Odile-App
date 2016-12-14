@@ -6,7 +6,13 @@
 -->
 <ion-content>
   <div class="mainDiv">
-    <div class="mainDiv__appName">Odile</div>
+    <div class="mainDiv__appName">Odile - Tsunami</div>
+    <div class="mainDiv__navLeft" (click)="chapitrePrecedent()">
+      <img src="../../assets/images/navLeft.svg" alt="">
+    </div>
+    <div class="mainDiv__navRight" (click)="chapitreSuivant()">
+      <img src="../../assets/images/navRight.svg" alt="">
+    </div>
     <div class="mainDiv__explanation">Choisi le bon élément</div>
     <div class="mainDiv__moon">
       <img src="../../assets/images/lune.png" alt="">
@@ -22,6 +28,7 @@
   <div class="bottomNavArrow">
     <div class="bottomNavArrow__wrapper">
       <div class="bottomNavArrow__content" (press)="nextPage()">
+        <div class="bottomNavArrow__content__pageName"></div>
         <img src="../../assets/images/arrow.png" alt="">
       </div>
 

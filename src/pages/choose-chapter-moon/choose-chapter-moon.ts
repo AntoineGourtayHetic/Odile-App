@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { ElementChoiceMoonPage } from '../element-choice-moon/element-choice-moon';
+import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
+import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
 
 /*
   Generated class for the ChooseChapterMoon page.
@@ -21,21 +23,43 @@ export class ChooseChapterMoonPage {
     console.log('Hello ChooseChapterMoonPage Page');
   }
 
+  chapitreSuivant(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = "Aller au chapitre 2";
+    containerImage.style.display = "block" ;
+    containerTexte.classList.remove('precedent');
+    containerTexte.classList.add('suivant');
+
+  }
+
+  chapitrePrecedent(){
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
+
+    containerTexte.innerHTML = 'Aller au chapitre 3';
+    containerImage.style.display = "block";
+    containerTexte.classList.remove('suivant');
+    containerTexte.classList.add('precedent');
+  }
+
   nextPage(){
     let btn = document.querySelector(".buttonArea");
     console.log(btn);
-    let clicked = false;
-    let completed = false;
+
+    let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
-    clicked = true;
-    completed = true;
-    //Laisser le temps à l'animation de se faire
-    setTimeout(this.pushPage(), 1200);
-  }
 
-  pushPage(){
-    this.navCtrl.push(ElementChoiceMoonPage);
+    if (containerTexte.classList.contains('suivant')){
+      this.navCtrl.push(ChooseChapterCloudPage);
+    } else if (containerTexte.classList.contains('precedent')){
+      this.navCtrl.push(ChooseChapterGroundPage);
+    } else {
+      //Valider réponse
+    }
+    //Laisser le temps à l'animation de se faire
   }
 }

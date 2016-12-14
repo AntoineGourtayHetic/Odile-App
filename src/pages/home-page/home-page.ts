@@ -50,16 +50,12 @@ export class HomePagePage {
     let element: any = document.getElementById("water");
     element.addClass("start");
   }
-
-<<<<<<< HEAD
   submitCode() {
     this.socket.emit('mobile:key', this.key);
   }
 
-=======
   /*Dev function to test navigation*/
   nextPage() {
-    this.navCtrl.push(ChooseChapterCloudPage);
+    this.navController.push(ChooseChapterCloudPage);
   }
->>>>>>> d22841dbde294dca6fda2a7182205e83e551fe39
 }
