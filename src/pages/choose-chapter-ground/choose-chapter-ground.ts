@@ -31,6 +31,29 @@ export class ChooseChapterGroundPage {
     containerImage.classList.remove('precedent');
     containerImage.classList.add('suivant');
 
+    //Change dynamicaly the image
+    let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
+    zoneImage.setAttribute('src', '../../assets/images/vague.svg' );
+
+    //Hiding this div
+    let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
+    zoneChoixElement.style.display = 'none';
+
+    //Applying style to div
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    zoneChangeGame.style.display = 'block';
+    zoneChangeGame.style.textAlign = 'center';
+
+    //Applying style to image
+    let imageJeu: any = document.getElementsByClassName('mainDiv__changingGame__image')[0];
+    imageJeu.style.display = 'block';
+    imageJeu.style.width = '50%';
+    imageJeu.style.margin = 'auto';
+
+    //Applying style to cancel image
+    let cancelImage: any = document.getElementsByClassName('mainDiv__changingGame__cancel')[0];
+    cancelImage.style.height = '10%';
+
   }
 
   chapitrePrecedent(){
@@ -39,7 +62,30 @@ export class ChooseChapterGroundPage {
     containerImage.style.display = "block";
     containerImage.classList.remove('suivant');
     containerImage.classList.add('precedent');
+
+    let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
+    zoneImage.setAttribute('src', '../../assets/images/maree.svg');
+
+    //Hiding this div
+    let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
+    zoneChoixElement.style.display = 'none';
+
+    //Applying style to div
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    zoneChangeGame.style.display = 'block';
+    zoneChangeGame.style.textAlign = 'center';
+
+    //Applying style to image
+    let imageJeu: any = document.getElementsByClassName('mainDiv__changingGame__image')[0];
+    imageJeu.style.display = 'block';
+    imageJeu.style.width = '50%';
+    imageJeu.style.margin = 'auto';
+
+    //Applying style to cancel image
+    let cancelImage: any = document.getElementsByClassName('mainDiv__changingGame__cancel')[0];
+    cancelImage.style.height = '10%';
   }
+
 
   nextPage() {
     let btn = document.querySelector(".buttonArea");

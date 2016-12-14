@@ -85,7 +85,7 @@ export class ChooseChapterCloudPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/maree.svg');
+    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
