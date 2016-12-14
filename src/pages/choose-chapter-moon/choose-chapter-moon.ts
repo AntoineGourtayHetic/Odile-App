@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { ElementChoiceMoonPage } from '../element-choice-moon/element-choice-moon';
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
+import * as io from "socket.io-client";
 
 /*
   Generated class for the ChooseChapterMoon page.
@@ -16,8 +16,13 @@ import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter
   templateUrl: 'choose-chapter-moon.html'
 })
 export class ChooseChapterMoonPage {
-
-  constructor(public navCtrl: NavController) {}
+  private selectedAnswer:string;
+  private socketHost:string;
+  private socket:any;
+  constructor(public navCtrl: NavController) {
+    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socket = io(this.socketHost);
+  }
 
   ionViewDidLoad() {
     console.log('Hello ChooseChapterMoonPage Page');
@@ -103,4 +108,13 @@ export class ChooseChapterMoonPage {
     }
     //Laisser le temps à l'animation de se faire
   }
+
+  selectAnswer(e) {
+
+    let answer = e.target.classList[1].split('-')[1];
+
+    this.socket.emit('answer-select', answer);
+
+  }
+
 }

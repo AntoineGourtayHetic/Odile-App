@@ -21,7 +21,6 @@ export class HomePagePage {
   private socket:any;
   private pos:Object;
   private moveCounter:number = 0;
-  public self = this;
   key:any;
 
   constructor(private navController: NavController, platform:Platform) {
@@ -43,7 +42,6 @@ export class HomePagePage {
 
       let watch = Shake.startWatch(40).subscribe(() => {
         this.socket.emit('mobile:shake', 'user shake');
-        alert('user shake');
       });
 
     });
