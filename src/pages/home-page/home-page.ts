@@ -21,7 +21,6 @@ export class HomePagePage {
   private socket:any;
   private pos:Object;
   private moveCounter:number = 0;
-  public self = this;
   key:any;
 
   constructor(private navController: NavController, platform:Platform) {

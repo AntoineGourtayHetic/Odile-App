@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 import { ElementChoiceGroundPage } from '../element-choice-ground/element-choice-ground';
-
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
-
+import * as io from "socket.io-client";
 
 /*
   Generated class for the ChooseChapterGround page.
@@ -18,14 +16,19 @@ import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moo
   templateUrl: 'choose-chapter-ground.html'
 })
 export class ChooseChapterGroundPage {
-
-  constructor(public navCtrl: NavController) {}
+  private selectedAnswer:string;
+  private socketHost:string;
+  private socket:any;
+  constructor(public navCtrl: NavController) {
+    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socket = io(this.socketHost);
+  }
 
   ionViewDidLoad() {
     console.log('Hello ChooseChapterGroundPage Page');
   }
 
-  chapitreSuivant(){
+  chapitreSuivant() {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
@@ -36,7 +39,7 @@ export class ChooseChapterGroundPage {
 
   }
 
-  chapitrePrecedent(){
+  chapitrePrecedent() {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let containerTexte: any = document.getElementsByClassName('bottomNavArrow__content__pageName')[0];
 
@@ -63,4 +66,13 @@ export class ChooseChapterGroundPage {
       //Valider réponse
     }
   }
+
+  selectAnswer(e) {
+
+    let answer = e.target.classList[1].split('-')[1];
+
+    this.socket.emit('answer-select', answer);
+
+  }
+
 }

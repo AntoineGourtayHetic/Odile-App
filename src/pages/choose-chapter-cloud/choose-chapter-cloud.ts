@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
+import { DeviceMotion, Shake } from 'ionic-native';
 import * as io from "socket.io-client";
 
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
@@ -18,14 +19,32 @@ import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moo
 })
 export class ChooseChapterCloudPage {
 
+  public lastX:number;
+  public lastY:number;
+  public lastZ:number;
   private selectedAnswer:string;
   private socketHost:string;
   private socket:any;
+  private pos:Object;
 
 
   constructor(public navCtrl: NavController, public platform: Platform) {
     this.socketHost = "http://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
+
+    let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+
+      this.lastX = Math.round(acc.x * 100) / 100;
+      this.lastY = Math.round(acc.y * 100) / 100;
+      this.lastZ = Math.round(acc.z * 100) / 100;
+
+
+      this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+
+      this.socket.emit('mobile:move', this.pos);
+
+    });
+
   }
 
   ionViewDidLoad() {

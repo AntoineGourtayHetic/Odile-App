@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePagePage } from '../home-page/home-page';
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
+import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
 
 /*
   Generated class for the ConnexionScreen page.
@@ -26,8 +27,12 @@ export class ConnexionScreenPage {
 
   /*Open a new page*/
 
-  toCloudChapter(){
+  toCloudQuestion(){
     this.navCtrl.push(ChooseChapterCloudPage);
+  }
+
+  toCloudGame(){
+    this.navCtrl.push(ElementChoiceCloudPage);
   }
 
 }
