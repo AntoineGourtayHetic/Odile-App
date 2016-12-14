@@ -22,7 +22,7 @@ export class HomePage {
       this.socketHost = "http://10.31.2.40:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
-      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+      let subscription = DeviceMotion.watchAcceleration({frequency:1000}).subscribe(acc => {
 
         this.lastX = Math.round(acc.x * 100) / 100;
         this.lastY = Math.round(acc.y * 100) / 100;
