@@ -26,8 +26,12 @@ page-element-choice-ground {
 
     .mainDiv__ground {
       position: relative;
-      top:20%;
-      left:5%;
+    }
+
+    .mainDiv__changingGame {
+      display: none;
+      height: 80vh;
+
     }
   }
   .bottomNavArrow{

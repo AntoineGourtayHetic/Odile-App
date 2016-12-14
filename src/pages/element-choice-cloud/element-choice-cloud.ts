@@ -45,8 +45,16 @@ export class ElementChoiceCloudPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('Hello ElementChoiceCloudPage Page');
+  closePanel(){
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    let zoneChoixElement: any = document.getElementsByClassName('mainDiv__cloud')[0];
+    let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+
+    zoneChangeGame.style.display = 'none';
+    zoneChoixElement.style.display = 'block';
+    zoneChoixElement.style.position = 'relative';
+    zoneChoixElement.style.height = '50vh';
+    containerImage.style.display = 'none';
   }
 
   chapitreSuivant(){
@@ -55,6 +63,29 @@ export class ElementChoiceCloudPage {
     containerImage.classList.remove('precedent');
     containerImage.classList.add('suivant');
 
+    //Change dynamicaly the image
+    let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
+    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg' );
+
+    //Hiding this div
+    let zoneChoixElement: any = document.getElementsByClassName('mainDiv__cloud')[0];
+    zoneChoixElement.style.display = 'none';
+
+    //Applying style to div
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    zoneChangeGame.style.display = 'block';
+    zoneChangeGame.style.textAlign = 'center';
+
+    //Applying style to image
+    let imageJeu: any = document.getElementsByClassName('mainDiv__changingGame__image')[0];
+    imageJeu.style.display = 'block';
+    imageJeu.style.width = '50%';
+    imageJeu.style.margin = 'auto';
+
+    //Applying style to cancel image
+    let cancelImage: any = document.getElementsByClassName('mainDiv__changingGame__cancel')[0];
+    cancelImage.style.height = '10%';
+
   }
 
   chapitrePrecedent(){
@@ -62,6 +93,28 @@ export class ElementChoiceCloudPage {
     containerImage.style.display = "block";
     containerImage.classList.remove('suivant');
     containerImage.classList.add('precedent');
+
+    let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
+    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
+
+    //Hiding this div
+    let zoneChoixElement: any = document.getElementsByClassName('mainDiv__cloud')[0];
+    zoneChoixElement.style.display = 'none';
+
+    //Applying style to div
+    let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
+    zoneChangeGame.style.display = 'block';
+    zoneChangeGame.style.textAlign = 'center';
+
+    //Applying style to image
+    let imageJeu: any = document.getElementsByClassName('mainDiv__changingGame__image')[0];
+    imageJeu.style.display = 'block';
+    imageJeu.style.width = '50%';
+    imageJeu.style.margin = 'auto';
+
+    //Applying style to cancel image
+    let cancelImage: any = document.getElementsByClassName('mainDiv__changingGame__cancel')[0];
+    cancelImage.style.height = '10%';
   }
 
   nextPage(){
