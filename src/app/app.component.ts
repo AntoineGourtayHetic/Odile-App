@@ -3,13 +3,13 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
-
-
+import { ConnexionScreenPage } from '../pages/connexion-screen/connexion-screen';
+import { ChooseChapterMoonPage } from '../pages/choose-chapter-moon/choose-chapter-moon';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  rootPage = ConnexionScreenPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

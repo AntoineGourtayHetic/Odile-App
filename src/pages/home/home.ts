@@ -22,7 +22,7 @@ export class HomePage {
       this.socketHost = "http://192.168.1.97:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
-      let subscription = DeviceMotion.watchAcceleration({frequency:1000}).subscribe(acc => {
+      let subscription = DeviceMotion.watchAcceleration({frequency:60}).subscribe(acc => {
 
         this.lastX = Math.round(acc.x * 100) / 100;
         this.lastY = Math.round(acc.y * 100) / 100;
@@ -32,8 +32,9 @@ export class HomePage {
         this.socket.emit('mobile:position', this.pos);
       });
 
-      let watch = Shake.startWatch(60).subscribe(() => {
-        this.socket.emit('mobile:shake', localStorage.setItem("key", this.key));
+      let watch = Shake.startWatch(40).subscribe(() => {
+        this.socket.emit('mobile:shake', 'user shake');
+        console.log("SHAKING DA BOOTY");
       });
 
     });
