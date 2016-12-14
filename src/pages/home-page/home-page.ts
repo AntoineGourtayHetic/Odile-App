@@ -21,11 +21,12 @@ export class HomePagePage {
   private socket:any;
   private pos:Object;
   private moveCounter:number = 0;
+  public self = this;
   key:any;
 
   constructor(private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://oceania.herokuapp.com/"; // To change when the node server is in production
+      this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -36,12 +37,13 @@ export class HomePagePage {
 
         this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
 
-        this.socket.emit('mobile:position', 'rrr');
+        this.socket.emit('mobile:move', this.pos);
 
       });
 
-      let watch = Shake.startWatch(60).subscribe(() => {
-        console.log("SHAKING DA BOOTY")
+      let watch = Shake.startWatch(40).subscribe(() => {
+        this.socket.emit('mobile:shake', 'user shake');
+        alert('user shake');
       });
 
     });

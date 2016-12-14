@@ -19,7 +19,7 @@ export class HomePage {
 
   constructor (private navController: NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://localhost:1337/"; // To change when the node server is in production
+      this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:60}).subscribe(acc => {
@@ -32,8 +32,9 @@ export class HomePage {
         this.socket.emit('mobile:position', this.pos);
       });
 
-      let watch = Shake.startWatch(70).subscribe(() => {
-        console.log("SHAKING DA BOOTY")
+      let watch = Shake.startWatch(40).subscribe(() => {
+        this.socket.emit('mobile:shake', 'user shake');
+        console.log("SHAKING DA BOOTY");
       });
 
     });
