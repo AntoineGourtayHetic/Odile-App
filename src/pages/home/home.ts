@@ -17,9 +17,9 @@ export class HomePage {
   private moveCounter:number = 0;
   key:any;
 
-  constructor (private navController: NavController, platform:Platform) {
+  constructor (private navController:NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
+      this.socketHost = "http://10.31.2.40:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -41,7 +41,12 @@ export class HomePage {
   }
 
   submitCode() {
+    localStorage.setItem("key", this.key)
     this.socket.emit('mobile:key', this.key);
+  }
+
+  changePage(page) {
+    this.socket.emit('mobile:router', page);
   }
 
 }
