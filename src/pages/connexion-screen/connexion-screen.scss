@@ -6,17 +6,30 @@ page-connexion-screen {
 
     .content__appName {
       text-align: center;
-      font-family: Nickainley;
+      font-family: "Nickainley", normal;
       font-size: 35px;
     }
     .form {
-    .form_item {
+      width: 100%;
+      text-align: center;
+      .form_item {
         .form__item_input {
-          text-align: center;
+          width: 200px;
+          height: 50px;
+          border: solid 1px black;
+          border-radius: 30px;
+          bottom: 3.5rem;
         }
       }
       .form__submitButton {
-
+        margin: auto;
+        color: black;
+        background: transparent;
+        width: 200px;
+        height: 50px;
+        border: solid 1px black;
+        border-radius: 30px;
+        position: relative;
       }
     }
 

@@ -7,7 +7,7 @@ page-home-page {
 
     .mainDiv__appName {
       text-align: center;
-      font-family: Nickainley;
+      font-family: "Nickainley";
       font-size: 35px;
       padding-top: 20px;
     }
@@ -19,7 +19,6 @@ page-home-page {
       $bg-color: #EF5350;
       $drop-time: 1.3s;
 
-      margin: 0;
       width: 200px;
       height: 200px;
       border-radius: 100%;
@@ -28,7 +27,7 @@ page-home-page {
       overflow: hidden;
       position: relative;
       margin: auto;
-      margin-top: 28%;     
+      margin-top: 28%;
 
       .water {
         background: $water-color;
@@ -59,11 +58,11 @@ page-home-page {
         animation: waves $drop-time*2 ease-in infinite;
       }
       @keyframes waves {
-        0% { bottom: 0; 
+        0% { bottom: 0;
               left: 0;}
         20% { left: 1%; }
         30% { bottom: 0; }
-        45% { bottom: 0.7%; 
+        45% { bottom: 0.7%;
               left: 0;}
         75% { bottom: 0; }
         85% { left: 0.7%; }
