@@ -26,19 +26,24 @@ export class ChooseChapterCloudPage {
   private socketHost:string;
   private socket:any;
   private pos:Object;
-
+  public validTime = false;
 
   constructor(public navCtrl: NavController, public platform: Platform) {
     platform.ready().then(() => {
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
+      var that = this;
 
-      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+      setTimeout(function() {
+        that.validTime = true;
+        console.log(this.validTime);
+      }, 17000);
+
+        let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
 
         this.lastX = Math.round(acc.x * 100) / 100;
         this.lastY = Math.round(acc.y * 100) / 100;
         this.lastZ = Math.round(acc.z * 100) / 100;
-
 
         this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ, key: localStorage.getItem("key")};
 
@@ -136,6 +141,7 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')) {
+      console.log(localStorage.getItem('key'));
       let sending = {
         page: 'tsunami-intro',
         key: localStorage.getItem("key")
@@ -157,12 +163,17 @@ export class ChooseChapterCloudPage {
 
   selectAnswer(e) {
 
-    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
+    console.log('SENDING ANSWER');
+    console.log(this.validTime);
+    if(this.validTime == true) {
+      console.log('ANSWER IS TRUE');
+      let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
-    this.socket.emit('mobile:answer-select', answer);
+      this.socket.emit('mobile:answer-select', answer);
 
-    if(answer.answer == 'cloud') {
-      this.navCtrl.setRoot(ElementChoiceCloudPage);
+      if(answer.answer == 'cloud') {
+        this.navCtrl.setRoot(ElementChoiceCloudPage);
+      }
     }
 
   }

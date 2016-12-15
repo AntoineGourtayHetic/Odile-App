@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 import { ElementChoiceMoonPage } from '../element-choice-moon/element-choice-moon';
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
@@ -16,12 +16,21 @@ import * as io from "socket.io-client";
   templateUrl: 'choose-chapter-moon.html'
 })
 export class ChooseChapterMoonPage {
+  public validTime:boolean = false;
   private selectedAnswer:string;
   private socketHost:string;
   private socket:any;
-  constructor(public navCtrl: NavController) {
-    this.socketHost = "https://oceania.herokuapp.com/";
-    this.socket = io(this.socketHost);
+  constructor(public navCtrl: NavController, platform: Platform) {
+    platform.ready().then(() => {
+      var that = this;
+      setTimeout(function() {
+        that.validTime = true;
+        console.log(this.validTime);
+      }, 25000);
+
+      this.socketHost = "https://oceania.herokuapp.com/";
+      this.socket = io(this.socketHost);
+    });
   }
 
   closePanel(){
@@ -131,13 +140,14 @@ export class ChooseChapterMoonPage {
   }
 
   selectAnswer(e) {
+    if(this.validTime == true) {
+      let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
-    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
+      this.socket.emit('mobile:answer-select', answer);
 
-    this.socket.emit('mobile:answer-select', answer);
-
-    if(answer.answer == 'moon') {
-      this.navCtrl.setRoot(ElementChoiceMoonPage);
+      if(answer.answer == 'moon') {
+        this.navCtrl.setRoot(ElementChoiceMoonPage);
+      }
     }
 
   }
