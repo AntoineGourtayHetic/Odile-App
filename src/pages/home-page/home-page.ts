@@ -27,27 +27,10 @@ export class HomePagePage {
     platform.ready().then(() => {
       this.socketHost = "http://10.33.1.220:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
-
-      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
-
-        this.lastX = Math.round(acc.x * 100) / 100;
-        this.lastY = Math.round(acc.y * 100) / 100;
-        this.lastZ = Math.round(acc.z * 100) / 100;
-
-        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
-
-        this.socket.emit('mobile:move', this.pos);
-
-      });
-
-      let watch = Shake.startWatch(40).subscribe(() => {
-        this.socket.emit('mobile:shake', 'user shake');
-      });
-
     });
   }
 
-  onConnected() {
+  onIntroFinished() {
     let element: any = document.getElementById("water");
     element.addClass("start");
   }
