@@ -37,7 +37,7 @@ export class ElementChoiceGroundPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg' );
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('mainDiv__ground')[0];
@@ -67,7 +67,7 @@ export class ElementChoiceGroundPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
+    zoneImage.setAttribute('src', 'assets/images/vague.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('mainDiv__ground')[0];

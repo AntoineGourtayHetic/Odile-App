@@ -20,7 +20,7 @@ export class ChooseChapterMoonPage {
   private socketHost:string;
   private socket:any;
   constructor(public navCtrl: NavController) {
-    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socketHost = "http://10.33.1.220:1337/";
     this.socket = io(this.socketHost);
   }
 
@@ -44,7 +44,7 @@ export class ChooseChapterMoonPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/maree.svg' );
+    zoneImage.setAttribute('src', 'assets/images/maree.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -75,7 +75,7 @@ export class ChooseChapterMoonPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg');
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -118,9 +118,9 @@ export class ChooseChapterMoonPage {
 
   selectAnswer(e) {
 
-    let answer = e.target.classList[1].split('-')[1];
+    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
-    this.socket.emit('answer-select', answer);
+    this.socket.emit('mobile:answer-select', answer);
 
   }
 

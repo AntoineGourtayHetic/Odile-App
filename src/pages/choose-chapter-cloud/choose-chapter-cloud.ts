@@ -29,22 +29,23 @@ export class ChooseChapterCloudPage {
 
 
   constructor(public navCtrl: NavController, public platform: Platform) {
-    this.socketHost = "http://10.33.1.180:1337/";
-    this.socket = io(this.socketHost);
+    platform.ready().then(() => {
+      this.socketHost = "http://10.33.1.220:1337/";
+      this.socket = io(this.socketHost);
 
-    let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
 
-      this.lastX = Math.round(acc.x * 100) / 100;
-      this.lastY = Math.round(acc.y * 100) / 100;
-      this.lastZ = Math.round(acc.z * 100) / 100;
+        this.lastX = Math.round(acc.x * 100) / 100;
+        this.lastY = Math.round(acc.y * 100) / 100;
+        this.lastZ = Math.round(acc.z * 100) / 100;
 
 
-      this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ, key: localStorage.getItem("key")};
 
-      this.socket.emit('mobile:move', this.pos);
+        this.socket.emit('mobile:move', this.pos);
 
-    });
-
+      });
+    })
   }
 
   closePanel(){
@@ -68,7 +69,7 @@ export class ChooseChapterCloudPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg' );
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -98,7 +99,7 @@ export class ChooseChapterCloudPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
+    zoneImage.setAttribute('src', 'assets/images/vague.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -142,7 +143,7 @@ export class ChooseChapterCloudPage {
 
   selectAnswer(e) {
 
-    let answer = e.target.classList[1].split('-')[1];
+    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
     this.socket.emit('mobile:answer-select', answer);
 
