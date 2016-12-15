@@ -58,13 +58,19 @@ page-choose-chapter-moon {
         background-image: url(../../assets/images/lune.png);
       }
 
-      .answer-mouette {
-        background-image: url(../../assets/images/mouette.png);
+      .answer-rock {
+        background-image: url(../../assets/images/rocher.svg);
       }
 
-      .answer-cloud {
-        background-image: url(../../assets/images/nuage.png);
+      .answer-fish {
+        background-image: url(../../assets/images/poisson.svg);
       }
+
+    }
+
+    .mainDiv__changingGame {
+      display: none;
+      height: 80vh;
 
     }
   }

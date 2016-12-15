@@ -38,7 +38,6 @@ page-choose-chapter-cloud {
     .answers-container {
       display: block;
       width: 100vw;
-      height: 50vh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -46,7 +45,7 @@ page-choose-chapter-cloud {
 
       .answer {
         width: 100vw;
-        height: 20vh;
+        height: 17vh;
         border-radius: 25%;
         background-color: #FFFFFF;
         -webkit-background-size: contain;
@@ -60,13 +59,19 @@ page-choose-chapter-cloud {
         background-image: url(../../assets/images/lune.png);
       }
 
-      .answer-mouette {
-        background-image: url(../../assets/images/mouette.png);
+      .answer-star {
+        background-image: url(../../assets/images/etoile.svg);
       }
 
-      .answer-cloud {
-        background-image: url(../../assets/images/nuage.png);
+      .answer-human {
+        background-image: url(../../assets/images/homme.svg);
       }
+
+    }
+
+    .mainDiv__changingGame {
+      display: none;
+      height: 80vh;
 
     }
 

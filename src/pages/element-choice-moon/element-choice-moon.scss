@@ -27,6 +27,12 @@ page-element-choice-moon {
     .mainDiv__moon {
       position: relative;
     }
+
+    .mainDiv__changingGame {
+      display: none;
+      height: 80vh;
+
+    }
   }
   .bottomNavArrow{
     position:absolute;

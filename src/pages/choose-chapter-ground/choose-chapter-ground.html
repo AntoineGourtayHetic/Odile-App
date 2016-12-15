@@ -15,16 +15,19 @@
     </div>
     <div class="mainDiv__explanation">Choisi le bon élément</div>
     <div class="answers-container">
-      <div class="answer answer-moon" (click)="selectAnswer($event)"></div>
-      <div class="answer answer-mouette" (click)="selectAnswer($event)"></div>
-      <div class="answer answer-cloud" (click)="selectAnswer($event)"></div>
+      <div class="answer answer-iceberg" (click)="selectAnswer($event)"></div>
+      <div class="answer answer-boat" (click)="selectAnswer($event)"></div>
+      <div class="answer answer-ground" (click)="selectAnswer($event)"></div>
+    </div>
+    <div class="mainDiv__changingGame">
+      <img class="mainDiv__changingGame__image" src="" alt="">
+      <img class="mainDiv__changingGame__cancel" src="../../assets/images/cancel.png" alt="" (click)="closePanel()">
     </div>
   </div>
   <!--botton navigation-->
   <div class="bottomNavArrow">
     <div class="bottomNavArrow__wrapper">
       <div class="bottomNavArrow__content" (press)="nextPage()">
-        <div class="bottomNavArrow__content__pageName"></div>
         <img class="bottomNavArrow__content__image" src="../../assets/images/tickValidate.svg" alt="">
       </div>
 

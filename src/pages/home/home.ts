@@ -19,7 +19,7 @@ export class HomePage {
 
   constructor (private navController:NavController, platform:Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://192.168.1.97:1337/"; // To change when the node server is in production
+    this.socketHost = "http://10.33.1.180:1337/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:60}).subscribe(acc => {
