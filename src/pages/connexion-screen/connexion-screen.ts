@@ -56,4 +56,8 @@ export class ConnexionScreenPage {
   nextPage() {
     this.navCtrl.push(HomePagePage);
   }
+
+  toCloudQuestion() {
+    this.navCtrl.push(ChooseChapterCloudPage);
+  }
 }
