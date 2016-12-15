@@ -30,6 +30,8 @@ export class ChooseChapterMoonPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let imageInBox: any = document.getElementsByClassName('answer')[0];
     imageInBox.style.height = '17vh';
+    let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
+    imageChangeGame.setAttribute('src', '');
 
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
@@ -137,7 +139,7 @@ export class ChooseChapterMoonPage {
     if(answer.answer == 'moon') {
       this.navCtrl.setRoot(ElementChoiceMoonPage);
     }
-    
+
   }
 
 }

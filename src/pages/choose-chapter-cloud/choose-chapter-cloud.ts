@@ -54,6 +54,8 @@ export class ChooseChapterCloudPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let imageInBox: any = document.getElementsByClassName('answer')[0];
     imageInBox.style.height = '17vh';
+    let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
+    imageChangeGame.setAttribute('src', '');
 
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
@@ -133,20 +135,22 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
 
-    if (containerTexte.classList.contains('suivant')){
+    if (containerTexte.classList.contains('suivant')) {
       let sending = {
         page: 'tsunami-intro',
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterGroundPage);
-    } else if (containerTexte.classList.contains('precedent')){
+      this.navCtrl.setRoot(ChooseChapterMoonPage);
+    } else if (containerTexte.classList.contains('precedent')) {
       let sending = {
         page: 'tide-intro',
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterMoonPage);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
+    } else {
+      //Valider réponse
     }
   }
 

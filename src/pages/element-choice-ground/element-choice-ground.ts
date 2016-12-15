@@ -21,7 +21,9 @@ export class ElementChoiceGroundPage {
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
     let zoneChoixElement: any = document.getElementsByClassName('mainDiv__ground')[0];
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
-
+    let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
+    imageChangeGame.setAttribute('src', '');
+    
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
     zoneChoixElement.style.position = 'relative';
