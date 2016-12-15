@@ -141,14 +141,14 @@ export class ChooseChapterCloudPage {
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterMoonPage);
+      this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else if (containerTexte.classList.contains('precedent')) {
       let sending = {
         page: 'tide-intro',
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterCloudPage);
+      this.navCtrl.setRoot(ChooseChapterMoonPage);
     } else {
       //Valider réponse
     }
