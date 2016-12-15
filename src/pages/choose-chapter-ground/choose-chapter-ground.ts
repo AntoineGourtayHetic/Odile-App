@@ -26,7 +26,7 @@ export class ChooseChapterGroundPage {
       this.socket = io(this.socketHost);
 
       let watch = Shake.startWatch(40).subscribe(() => {
-        this.socket.emit('mobile:shake', 'user shake');
+        this.socket.emit('mobile:shake', localStorage.getItem("key"));
         console.log("SHAKING DA BOOTY");
       });
     });
