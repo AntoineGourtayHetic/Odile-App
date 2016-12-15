@@ -26,7 +26,8 @@ export class ElementChoiceMoonPage {
 
 
     var subscription = DeviceOrientation.watchHeading().subscribe((data: CompassHeading) => {
-        this.socket.emit('mobile:compass', data);
+      var resp = {data:data, key:localStorage.getItem('key')};
+        this.socket.emit('mobile:compass', resp);
       });
 
 
