@@ -28,6 +28,8 @@ export class ChooseChapterMoonPage {
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let imageInBox: any = document.getElementsByClassName('answer')[0];
+    imageInBox.style.height = '17vh';
 
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
