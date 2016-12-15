@@ -112,14 +112,14 @@ export class ChooseChapterMoonPage {
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterGroundPage);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else if (containerTexte.classList.contains('precedent')){
       let sending = {
         page: 'tsunami-intro',
         key: localStorage.getItem("key")
       }
       this.socket.emit('mobile:router', sending);
-      this.navCtrl.setRoot(ChooseChapterCloudPage);
+      this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else {
       //Valider réponse
     }
