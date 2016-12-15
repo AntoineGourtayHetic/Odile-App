@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import * as io from "socket.io-client";
 import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 import { ChooseChapterCloudPage} from '../choose-chapter-cloud/choose-chapter-cloud';
 /*
@@ -15,7 +15,13 @@ import { ChooseChapterCloudPage} from '../choose-chapter-cloud/choose-chapter-cl
 })
 export class ElementChoiceGroundPage {
 
-  constructor(public navCtrl: NavController) {}
+  private socketHost:string;
+  private socket:any;
+
+  constructor(public navCtrl: NavController) {
+    this.socketHost = "https://oceania.herokuapp.com/";
+    this.socket = io(this.socketHost);
+  }
 
   closePanel(){
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
@@ -23,7 +29,7 @@ export class ElementChoiceGroundPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
     imageChangeGame.setAttribute('src', '');
-    
+
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
     zoneChoixElement.style.position = 'relative';
@@ -100,12 +106,22 @@ export class ElementChoiceGroundPage {
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
 
-    if (containerTexte.classList.contains('suivant')){
+    if (containerTexte.classList.contains('suivant')) {
+      let sending = {
+        page: 'tide-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterMoonPage);
-    } else if (containerTexte.classList.contains('precedent')){
-      this.navCtrl.push(ChooseChapterCloudPage);
+    } else if (containerTexte.classList.contains('precedent')) {
+      let sending = {
+        page: 'wave-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else {
-      //Do nothing
+      //Valider réponse
     }
     //Laisser le temps à l'animation de se faire
   }

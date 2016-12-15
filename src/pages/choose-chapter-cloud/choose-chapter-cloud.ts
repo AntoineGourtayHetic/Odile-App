@@ -3,7 +3,6 @@ import { NavController, Platform } from 'ionic-angular';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
 import { DeviceMotion, Shake } from 'ionic-native';
 import * as io from "socket.io-client";
-
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
 import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 
@@ -30,10 +29,11 @@ export class ChooseChapterCloudPage {
 
   constructor(public navCtrl: NavController, public platform: Platform) {
     platform.ready().then(() => {
+
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
       var that = this;
-
+      console.log(localStorage);
       setTimeout(function() {
         that.validTime = true;
         console.log(this.validTime);
@@ -141,7 +141,6 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')) {
-      console.log(localStorage.getItem('key'));
       let sending = {
         page: 'tsunami-intro',
         key: localStorage.getItem("key")
@@ -156,6 +155,7 @@ export class ChooseChapterCloudPage {
       this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterMoonPage);
     } else {
+      console.log('APPREND LE BON DEV EN T AMUSANT');
       //Valider réponse
     }
   }
@@ -164,7 +164,7 @@ export class ChooseChapterCloudPage {
   selectAnswer(e) {
 
     console.log('SENDING ANSWER');
-    console.log(this.validTime);
+    console.log('NUL? LOL XD' + this.validTime);
     if(this.validTime == true) {
       console.log('ANSWER IS TRUE');
       let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};

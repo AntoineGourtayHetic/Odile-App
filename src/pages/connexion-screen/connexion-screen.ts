@@ -5,7 +5,7 @@ import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-c
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
 import { ElementChoiceCloudPage } from '../element-choice-cloud/element-choice-cloud';
 import * as io from "socket.io-client";
-
+import { Storage } from '@ionic/storage';
 /*
   Generated class for the ConnexionScreen page.
 
@@ -22,7 +22,7 @@ export class ConnexionScreenPage {
   private socket:any;
   key:any;
 
-  constructor(public navCtrl: NavController, public platform: Platform) {
+  constructor(public navCtrl: NavController, public platform: Platform, public storage:Storage) {
     platform.ready().then(() => {
       this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
@@ -40,7 +40,10 @@ export class ConnexionScreenPage {
   }
 
   submitCode() {
-    localStorage.setItem("key", this.key)
+    this.storage.set('bonkey', this.key);
+    localStorage.setItem("key", this.key);
+    console.log('LA BONNE KLE DE TA MERE ' + this.key);
+    console.log('SET ITEM WALLAH: '  + localStorage.getItem("key"));
     this.socket.emit('mobile:key', this.key);
   }
 
