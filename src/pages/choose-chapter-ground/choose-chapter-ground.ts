@@ -131,6 +131,10 @@ export class ChooseChapterGroundPage {
 
     this.socket.emit('mobile:answer-select', answer);
 
+    if(answer.answer == 'ground') {
+      this.navCtrl.setRoot(ElementChoiceGroundPage);
+    }
+
   }
 
 }

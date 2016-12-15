@@ -132,6 +132,10 @@ export class ChooseChapterMoonPage {
 
     this.socket.emit('mobile:answer-select', answer);
 
+    if(answer.answer == 'moon') {
+      this.navCtrl.setRoot(ElementChoiceMoonPage);
+    }
+    
   }
 
 }
