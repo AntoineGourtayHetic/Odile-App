@@ -30,7 +30,7 @@ export class ChooseChapterCloudPage {
 
   constructor(public navCtrl: NavController, public platform: Platform) {
     platform.ready().then(() => {
-      this.socketHost = "http://10.33.1.220:1337/";
+      this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
 
       let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -132,11 +132,19 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'tide-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterMoonPage);
-    } else {
-      //TODO: Vérifier si bonne réponse, si bonne réponse, passer au suivant, sinon hide le bouton
     }
   }
 
@@ -146,6 +154,10 @@ export class ChooseChapterCloudPage {
     let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
     this.socket.emit('mobile:answer-select', answer);
+
+    if(answer.answer == 'cloud') {
+      this.navCtrl.setRoot(ElementChoiceCloudPage);
+    }
 
   }
 }
