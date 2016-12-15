@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { DeviceOrientation, CompassHeading } from 'ionic-native'
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
-
+import * as io from 'socket.io-client';
 /*
   Generated class for the ElementChoiceMoon page.
 
@@ -16,7 +16,21 @@ import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter
 })
 export class ElementChoiceMoonPage {
 
-  constructor(public navCtrl: NavController) {}
+  private socketHost:string;
+  private socket:any;
+
+  constructor(public navCtrl: NavController) {
+
+    this.socketHost = "https://oceania.herokuapp.com/";
+    this.socket = io(this.socketHost);
+
+
+    var subscription = DeviceOrientation.watchHeading().subscribe((data: CompassHeading) => {
+        this.socket.emit('mobile:compass', data);
+      });
+
+
+  }
 
   closePanel(){
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
@@ -24,7 +38,7 @@ export class ElementChoiceMoonPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
     imageChangeGame.setAttribute('src', '');
-    
+
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
     zoneChoixElement.style.position = 'relative';
