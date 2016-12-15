@@ -17,11 +17,18 @@ import * as io from "socket.io-client";
   templateUrl: 'choose-chapter-ground.html'
 })
 export class ChooseChapterGroundPage {
+  public validTime:boolean = false;
   private selectedAnswer:string;
   private socketHost:string;
   private socket:any;
   constructor(public navCtrl: NavController, platform:Platform) {
     platform.ready().then(() => {
+      var that = this;
+      setTimeout(function() {
+        that.validTime = true;
+        console.log(this.validTime);
+      }, 23000);
+
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
 
@@ -139,13 +146,14 @@ export class ChooseChapterGroundPage {
   }
 
   selectAnswer(e) {
+    if(this.validTime == true) {
+      let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
-    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
+      this.socket.emit('mobile:answer-select', answer);
 
-    this.socket.emit('mobile:answer-select', answer);
-
-    if(answer.answer == 'ground') {
-      this.navCtrl.setRoot(ElementChoiceGroundPage);
+      if(answer.answer == 'ground') {
+        this.navCtrl.setRoot(ElementChoiceGroundPage);
+      }
     }
 
   }

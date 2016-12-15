@@ -31,11 +31,11 @@ export class HomePagePage {
       setTimeout(function() {
         let element: any = document.getElementById("water");
         element.className += " start";
-      }, 23000);
+      }, 25000);
 
       setTimeout(function() {
         navController.push(ChooseChapterCloudPage);
-      }, 27000);
+      }, 29000);
 
     });
   }
@@ -44,7 +44,7 @@ export class HomePagePage {
     let element: any = document.getElementById("water");
     element.addClass("start");
   }
-  
+
   submitCode() {
     this.socket.emit('mobile:key', this.key);
   }

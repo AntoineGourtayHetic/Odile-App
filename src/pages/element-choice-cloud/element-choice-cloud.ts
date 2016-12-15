@@ -51,7 +51,7 @@ export class ElementChoiceCloudPage {
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
     let imageChangeGame: any = document.querySelector('.mainDiv__changingGame__image');
     imageChangeGame.setAttribute('src', '');
-    
+
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
     zoneChoixElement.style.position = 'relative';
@@ -128,13 +128,24 @@ export class ElementChoiceCloudPage {
     document.querySelector(".water-fill").classList.add("anim");
     document.querySelector(".water-fill2").classList.add("anim");
 
-    if (containerTexte.classList.contains('suivant')){
+    if (containerTexte.classList.contains('suivant')) {
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
-    } else if (containerTexte.classList.contains('precedent')){
+    } else if (containerTexte.classList.contains('precedent')) {
+      let sending = {
+        page: 'tide-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterMoonPage);
     } else {
-      //Do nothing
-    }
+      console.log('APPREND LE BON DEV EN T AMUSANT');
+      //Valider réponse
+    }  
     //Laisser le temps à l'animation de se faire
   }
 }
