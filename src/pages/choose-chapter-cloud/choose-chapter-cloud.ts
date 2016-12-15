@@ -29,7 +29,7 @@ export class ChooseChapterCloudPage {
 
 
   constructor(public navCtrl: NavController, public platform: Platform) {
-    this.socketHost = "http://localhost:8100/";
+    this.socketHost = "http://10.33.1.180:1337/";
     this.socket = io(this.socketHost);
 
     let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
@@ -144,7 +144,7 @@ export class ChooseChapterCloudPage {
 
     let answer = e.target.classList[1].split('-')[1];
 
-    this.socket.emit('answer-select', answer);
+    this.socket.emit('mobile:answer-select', answer);
 
   }
 }
