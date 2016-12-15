@@ -12,6 +12,8 @@ import { ChooseChapterGroundPage } from '../pages/choose-chapter-ground/choose-c
 import { ChooseChapterMoonPage } from '../pages/choose-chapter-moon/choose-chapter-moon';
 import { ConnexionScreenPage } from '../pages/connexion-screen/connexion-screen';
 
+import { Storage } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,6 +43,6 @@ import { ConnexionScreenPage } from '../pages/connexion-screen/connexion-screen'
     ChooseChapterMoonPage,
     ConnexionScreenPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [Storage, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

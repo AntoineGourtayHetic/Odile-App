@@ -116,11 +116,21 @@ export class ElementChoiceMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
+      let sending = {
+        page: 'wave-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else {
-      //Do nothing
+      //Valider réponse
     }
     //Laisser le temps à l'animation de se faire
   }
