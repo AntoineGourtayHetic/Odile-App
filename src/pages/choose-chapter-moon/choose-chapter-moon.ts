@@ -20,7 +20,7 @@ export class ChooseChapterMoonPage {
   private socketHost:string;
   private socket:any;
   constructor(public navCtrl: NavController) {
-    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
   }
 
@@ -28,6 +28,8 @@ export class ChooseChapterMoonPage {
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let imageInBox: any = document.getElementsByClassName('answer')[0];
+    imageInBox.style.height = '17vh';
 
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
@@ -44,7 +46,7 @@ export class ChooseChapterMoonPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/maree.svg' );
+    zoneImage.setAttribute('src', 'assets/images/maree.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -75,7 +77,7 @@ export class ChooseChapterMoonPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg');
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -107,8 +109,18 @@ export class ChooseChapterMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
+      let sending = {
+        page: 'wave-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else {
       //Valider réponse
@@ -118,10 +130,14 @@ export class ChooseChapterMoonPage {
 
   selectAnswer(e) {
 
-    let answer = e.target.classList[1].split('-')[1];
+    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
-    this.socket.emit('answer-select', answer);
+    this.socket.emit('mobile:answer-select', answer);
 
+    if(answer.answer == 'moon') {
+      this.navCtrl.setRoot(ElementChoiceMoonPage);
+    }
+    
   }
 
 }

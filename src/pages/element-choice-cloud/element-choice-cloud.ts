@@ -27,7 +27,7 @@ export class ElementChoiceCloudPage {
 
   constructor(public navCtrl: NavController, public platform: Platform) {
 
-    this.socketHost = "http://oceania.herokuapp.com/";
+    this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
 
     let subscription = DeviceMotion.watchAcceleration({frequency:400}).subscribe(acc => {
@@ -65,7 +65,7 @@ export class ElementChoiceCloudPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg' );
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('mainDiv__cloud')[0];
@@ -95,7 +95,7 @@ export class ElementChoiceCloudPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
+    zoneImage.setAttribute('src', 'assets/images/vague.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('mainDiv__cloud')[0];

@@ -8,10 +8,10 @@
   <div class="mainDiv">
     <div class="mainDiv__appName">Odile - Tsunami</div>
     <div class="mainDiv__navLeft" (click)="chapitrePrecedent()">
-      <img src="../../assets/images/navLeft.svg" alt="">
+      <img src="assets/images/navLeft.svg" alt="">
     </div>
     <div class="mainDiv__navRight" (click)="chapitreSuivant()">
-      <img src="../../assets/images/navRight.svg" alt="">
+      <img src="assets/images/navRight.svg" alt="">
     </div>
     <div class="mainDiv__explanation">Choisi le bon élément</div>
     <div class="answers-container">
@@ -21,14 +21,14 @@
     </div>
     <div class="mainDiv__changingGame">
       <img class="mainDiv__changingGame__image" src="" alt="">
-      <img class="mainDiv__changingGame__cancel" src="../../assets/images/cancel.png" alt="" (click)="closePanel()">
+      <img class="mainDiv__changingGame__cancel" src="assets/images/cancel.png" alt="" (click)="closePanel()">
     </div>
   </div>
   <!--botton navigation-->
   <div class="bottomNavArrow">
     <div class="bottomNavArrow__wrapper">
-      <div class="bottomNavArrow__content" (press)="nextPage()">
-        <img class="bottomNavArrow__content__image" src="../../assets/images/tickValidate.svg" alt="">
+      <div class="bottomNavArrow__content" (click)="nextPage()">
+        <img class="bottomNavArrow__content__image" src="assets/images/tickValidate.svg" alt="">
       </div>
 
       <div class="bottomNavArrow__fill">
@@ -50,4 +50,3 @@
     </div>
   </div>
 </ion-content>
-

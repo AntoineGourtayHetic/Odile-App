@@ -29,28 +29,31 @@ export class ChooseChapterCloudPage {
 
 
   constructor(public navCtrl: NavController, public platform: Platform) {
-    this.socketHost = "http://10.33.1.180:1337/";
-    this.socket = io(this.socketHost);
+    platform.ready().then(() => {
+      this.socketHost = "https://oceania.herokuapp.com/";
+      this.socket = io(this.socketHost);
 
-    let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
+      let subscription = DeviceMotion.watchAcceleration({frequency:200}).subscribe(acc => {
 
-      this.lastX = Math.round(acc.x * 100) / 100;
-      this.lastY = Math.round(acc.y * 100) / 100;
-      this.lastZ = Math.round(acc.z * 100) / 100;
+        this.lastX = Math.round(acc.x * 100) / 100;
+        this.lastY = Math.round(acc.y * 100) / 100;
+        this.lastZ = Math.round(acc.z * 100) / 100;
 
 
-      this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ};
+        this.pos = {x: this.lastX, y: this.lastY, z: this.lastZ, key: localStorage.getItem("key")};
 
-      this.socket.emit('mobile:move', this.pos);
+        this.socket.emit('mobile:move', this.pos);
 
-    });
-
+      });
+    })
   }
 
   closePanel(){
     let zoneChangeGame: any = document.getElementsByClassName('mainDiv__changingGame')[0];
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
     let containerImage: any = document.getElementsByClassName('bottomNavArrow__content__image')[0];
+    let imageInBox: any = document.getElementsByClassName('answer')[0];
+    imageInBox.style.height = '17vh';
 
     zoneChangeGame.style.display = 'none';
     zoneChoixElement.style.display = 'block';
@@ -68,7 +71,7 @@ export class ChooseChapterCloudPage {
 
     //Change dynamicaly the image
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/tsunami.svg' );
+    zoneImage.setAttribute('src', 'assets/images/tsunami.svg' );
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -98,7 +101,7 @@ export class ChooseChapterCloudPage {
     containerImage.classList.add('precedent');
 
     let zoneImage: any = document.querySelector('.mainDiv__changingGame__image');
-    zoneImage.setAttribute('src', '../../assets/images/vague.svg');
+    zoneImage.setAttribute('src', 'assets/images/vague.svg');
 
     //Hiding this div
     let zoneChoixElement: any = document.getElementsByClassName('answers-container')[0];
@@ -131,20 +134,32 @@ export class ChooseChapterCloudPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
     } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'tide-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterMoonPage);
-    } else {
-      //TODO: Vérifier si bonne réponse, si bonne réponse, passer au suivant, sinon hide le bouton
     }
   }
 
 
   selectAnswer(e) {
 
-    let answer = e.target.classList[1].split('-')[1];
+    let answer = {answer: e.target.classList[1].split('-')[1], key: localStorage.getItem("key")};
 
     this.socket.emit('mobile:answer-select', answer);
+
+    if(answer.answer == 'cloud') {
+      this.navCtrl.setRoot(ElementChoiceCloudPage);
+    }
 
   }
 }
