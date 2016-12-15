@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
+import { Shake } from 'ionic-native';
 import { ElementChoiceGroundPage } from '../element-choice-ground/element-choice-ground';
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
 import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
@@ -19,9 +20,17 @@ export class ChooseChapterGroundPage {
   private selectedAnswer:string;
   private socketHost:string;
   private socket:any;
-  constructor(public navCtrl: NavController) {
-    this.socketHost = "https://oceania.herokuapp.com/";
-    this.socket = io(this.socketHost);
+  constructor(public navCtrl: NavController, platform:Platform) {
+    platform.ready().then(() => {
+      this.socketHost = "https://oceania.herokuapp.com/";
+      this.socket = io(this.socketHost);
+
+      let watch = Shake.startWatch(40).subscribe(() => {
+        this.socket.emit('mobile:shake', 'user shake');
+        console.log("SHAKING DA BOOTY");
+      });
+    });
+
   }
 
   closePanel(){
