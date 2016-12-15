@@ -27,7 +27,7 @@ export class ElementChoiceCloudPage {
 
   constructor(public navCtrl: NavController, public platform: Platform) {
 
-    this.socketHost = "http://10.33.1.220:1337/";
+    this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
 
     let subscription = DeviceMotion.watchAcceleration({frequency:400}).subscribe(acc => {

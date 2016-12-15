@@ -20,7 +20,7 @@ export class ChooseChapterMoonPage {
   private socketHost:string;
   private socket:any;
   constructor(public navCtrl: NavController) {
-    this.socketHost = "http://10.33.1.220:1337/";
+    this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
   }
 
@@ -107,9 +107,19 @@ export class ChooseChapterMoonPage {
     document.querySelector(".water-fill2").classList.add("anim");
 
     if (containerTexte.classList.contains('suivant')){
-      this.navCtrl.setRoot(ChooseChapterCloudPage);
-    } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'wave-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
       this.navCtrl.setRoot(ChooseChapterGroundPage);
+    } else if (containerTexte.classList.contains('precedent')){
+      let sending = {
+        page: 'tsunami-intro',
+        key: localStorage.getItem("key")
+      }
+      this.socket.emit('mobile:router', sending);
+      this.navCtrl.setRoot(ChooseChapterCloudPage);
     } else {
       //Valider réponse
     }
