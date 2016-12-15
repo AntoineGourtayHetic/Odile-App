@@ -56,19 +56,4 @@ export class ConnexionScreenPage {
   nextPage() {
     this.navCtrl.push(HomePagePage);
   }
-
-  /*Open a new page*/
-
-  toCloudQuestion() {
-    this.navCtrl.push(ChooseChapterCloudPage);
-  }
-
-  toGroundQuestion() {
-    this.navCtrl.push(ChooseChapterGroundPage);
-  }
-
-  toCloudGame() {
-    this.navCtrl.push(ElementChoiceCloudPage);
-  }
-
 }
