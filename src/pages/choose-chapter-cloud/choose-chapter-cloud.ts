@@ -32,8 +32,8 @@ export class ChooseChapterCloudPage {
 
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
+      this.socket.emit('mobile:update', localStorage.getItem('key'));
       var that = this;
-      console.log(localStorage);
       setTimeout(function() {
         that.validTime = true;
         console.log(this.validTime);

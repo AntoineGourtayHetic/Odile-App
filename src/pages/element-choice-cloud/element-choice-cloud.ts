@@ -29,7 +29,7 @@ export class ElementChoiceCloudPage {
 
     this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
-
+    this.socket.emit('mobile:update', localStorage.getItem('key'));
     let subscription = DeviceMotion.watchAcceleration({frequency:400}).subscribe(acc => {
 
       this.lastX = Math.round(acc.x * 100) / 100;
@@ -145,7 +145,7 @@ export class ElementChoiceCloudPage {
     } else {
       console.log('APPREND LE BON DEV EN T AMUSANT');
       //Valider réponse
-    }  
+    }
     //Laisser le temps à l'animation de se faire
   }
 }

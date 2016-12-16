@@ -21,6 +21,7 @@ export class ElementChoiceGroundPage {
   constructor(public navCtrl: NavController) {
     this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
+    this.socket.emit('mobile:update', localStorage.getItem('key'));
   }
 
   closePanel(){

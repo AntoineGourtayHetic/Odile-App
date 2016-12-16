@@ -23,7 +23,7 @@ export class ElementChoiceMoonPage {
 
     this.socketHost = "https://oceania.herokuapp.com/";
     this.socket = io(this.socketHost);
-
+    this.socket.emit('mobile:update', localStorage.getItem('key'));
 
     var subscription = DeviceOrientation.watchHeading().subscribe((data: CompassHeading) => {
       var resp = {data:data, key:localStorage.getItem('key')};

@@ -3,6 +3,8 @@ import { NavController, Platform } from 'ionic-angular';
 import { DeviceMotion, Shake } from 'ionic-native';
 import * as io from "socket.io-client";
 import { ChooseChapterCloudPage } from '../choose-chapter-cloud/choose-chapter-cloud';
+import { ChooseChapterGroundPage } from '../choose-chapter-ground/choose-chapter-ground';
+import { ChooseChapterMoonPage } from '../choose-chapter-moon/choose-chapter-moon';
 /*
   Generated class for the HomePage page.
 
@@ -27,6 +29,21 @@ export class HomePagePage {
     platform.ready().then(() => {
       this.socketHost = "https://oceania.herokuapp.com/"; // To change when the node server is in production
       this.socket = io(this.socketHost);
+
+      this.socket.on('mobile:router-send', function (page) {
+        console.log('ROUTING: ' + page);
+        if(page == 'wave-intro') {
+          this.navController.setRoot(ChooseChapterCloudPage);
+        }
+
+        if(page == 'tsunami-intro') {
+          this.navController.setRoot(ChooseChapterGroundPage);
+        }
+
+        if(page == 'tide-intro') {
+          this.navController.setRoot(ChooseChapterMoonPage);
+        }
+      });
 
       setTimeout(function() {
         let element: any = document.getElementById("water");

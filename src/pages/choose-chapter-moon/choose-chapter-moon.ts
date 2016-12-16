@@ -30,7 +30,10 @@ export class ChooseChapterMoonPage {
 
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
+
+      this.socket.emit('mobile:update', localStorage.getItem('key'));
     });
+
   }
 
   closePanel(){

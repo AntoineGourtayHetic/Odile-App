@@ -31,11 +31,12 @@ export class ChooseChapterGroundPage {
 
       this.socketHost = "https://oceania.herokuapp.com/";
       this.socket = io(this.socketHost);
-
+      this.socket.emit('mobile:update', localStorage.getItem('key'));
       let watch = Shake.startWatch(40).subscribe(() => {
         this.socket.emit('mobile:shake', localStorage.getItem("key"));
         console.log("SHAKING DA BOOTY");
       });
+
     });
 
   }
