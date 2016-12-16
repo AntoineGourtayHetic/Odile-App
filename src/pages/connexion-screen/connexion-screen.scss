@@ -38,9 +38,11 @@ page-connexion-screen {
     }
 
     .content__mouette {
+      height: 64vh;
 
       .content__mouette__img {
 
+        max-height: 100%;
       }
     }
   }
