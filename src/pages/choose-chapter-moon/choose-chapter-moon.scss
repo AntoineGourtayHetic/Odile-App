@@ -92,15 +92,14 @@ page-choose-chapter-moon {
 
     .bottomNavArrow__content{
       position: absolute;
-      top: 30%;
-      left:45%;
+      left:42%;
       transform: rotate(5deg);
       .bottomNavArrow__content__pageName {
 
       }
       img {
         display:none;
-        width:10vw;
+        width:25vw;
       }
       z-index:5;
     }
