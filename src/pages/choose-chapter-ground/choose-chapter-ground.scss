@@ -1,0 +1,144 @@
+page-choose-chapter-ground {
+  font-family: Nickainley;
+
+  .mainDiv{
+    background: linear-gradient(#FEF3F5, #F2F0D1);
+    height: 90%;
+    .mainDiv__appName {
+      width:100%;
+      text-align: center;
+      font-size: 35px;
+    }
+
+    .mainDiv__navLeft {
+      display: inline-block;
+      width: 49%;
+      img {
+        width:50%;
+      }
+    }
+
+    .mainDiv__navRight {
+      display: inline-block;
+      width:49%;
+      text-align: right;
+      img {
+        width:50%;
+      }
+    }
+
+    .mainDiv__explanation {
+      text-align: center;
+      font-size: 20px;
+    }
+    .answers-container {
+      display: block;
+      width: 100vw;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+
+      .answer {
+        width: 100vw;
+        height: 20vh;
+        border-radius: 25%;
+        background-color: #FFFFFF;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top:5%;
+
+      }
+
+      .answer-iceberg {
+        background-image: url("../assets/images/iceberg.svg");
+      }
+
+      .answer-boat {
+        background-image: url("../assets/images/bateau.svg");
+      }
+
+      .answer-ground {
+        background-image: url("../assets/images/ground.svg");
+      }
+
+    }
+
+    .mainDiv__changingGame {
+      display: none;
+      height: 80vh;
+
+    }
+  }
+  .bottomNavArrow{
+    position:absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 20%;
+    overflow: hidden;
+
+    .bottomNavArrow__wrapper {
+      background: #ffffff;
+      width: 100%;
+      height: 100%;
+      transform: skew(180deg, 175deg);
+      transform-origin: bottom right;
+    }
+
+    .bottomNavArrow__content{
+      position: absolute;
+      left:42%;
+      transform: rotate(5deg);
+      .bottomNavArrow__content__pageName {
+
+      }
+      img {
+        display:none;
+        width:25vw;
+      }
+      z-index:5;
+    }
+
+    .bottomNavArrow__fill {
+      left: -20px;
+      height: 150px;
+      width: calc(100% + 100px);
+      transform: skew(180deg, 180deg);
+      background-color: white;
+      overflow: hidden;
+      svg {
+        position: absolute;
+        bottom: -70px;
+        left:0;
+        opacity: 0.6;
+      }
+
+      .water-fill, .water-fill2 {
+        transition: 4s all ease;
+        height: 0;
+        y: 100px;
+      }
+
+      .water-fill.anim{
+        animation: wave 1s 5 linear;
+        height: 190px;
+        y: -90px;
+      }
+
+      .water-fill2.anim{
+        animation: wave 1s 5 reverse;
+        height: 190px;
+        y: -90px;
+      }
+
+      @keyframes wave {
+        0% { x: -400px; }
+        100% { x: 0; }
+      }
+    }
+  }
+  }

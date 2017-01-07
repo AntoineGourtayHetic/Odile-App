@@ -1,0 +1,49 @@
+page-connexion-screen {
+  .content {
+    overflow: hidden;
+    background: linear-gradient(#FEF3F5, #F2F0D1);
+    height: 100%;
+
+    .content__appName {
+      text-align: center;
+      font-family: "Nickainley", normal;
+      font-size: 35px;
+      margin-bottom: 5vh;
+    }
+    .form {
+      width : 100%;
+      height: 25vh;
+      display: flex;
+      flex-direction: column;
+      .form_item {
+
+        .form__item_input {
+          width: 200px;
+          height: 50px;
+          border: solid 1px black;
+          border-radius: 30px;
+          bottom: 3.5rem;
+        }
+      }
+      .form__submitButton {
+        margin: auto;
+        color: black;
+        background: transparent;
+        width: 200px;
+        height: 50px;
+        border: solid 1px black;
+        border-radius: 30px;
+        position: relative;
+      }
+    }
+
+    .content__mouette {
+      height: 64vh;
+
+      .content__mouette__img {
+
+        max-height: 100%;
+      }
+    }
+  }
+}

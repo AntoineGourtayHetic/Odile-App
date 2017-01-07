@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>MOTION DETECTOR</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Motion informations of device</h2>
+  <p>X : {{lastX}}</p>
+  <p>Y : {{lastY}}</p>
+  <p>Z : {{lastZ}}</p>
+
+  <form (ngSubmit)="submitCode()">
+    <ion-item>
+      <ion-label color="primary">Input code to get started</ion-label>
+      <ion-input [value]="key" [(ngModel)]="key" name="key" placeholder="Enter the KEY"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Send Code</button>
+  </form>
+
+  <button ion-button (click)="changePage('wind-sea')" ngDefaultControl block>Change Page</button>
+
+</ion-content>
