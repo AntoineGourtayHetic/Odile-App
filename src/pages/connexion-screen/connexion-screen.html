@@ -1,0 +1,18 @@
+<!--
+  Generated template for the ConnexionScreen page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="content">
+  <div class="content__appName">Odile</div>
+  <form class="form" (ngSubmit)="submitCode()">
+    <ion-item class="from__item">
+      <ion-input class="form__item_input" [value]="key" [(ngModel)]="key" name="key" placeholder="Entre le code"></ion-input>
+    </ion-item>
+    <button class="form__submitButton" ion-button type="submit" block>Envoyer le code</button>
+  </form>
+  <div class="content__mouette">
+    <img class="content__mouette__img" src="assets/images/mouette.png" alt="">
+  </div>
+</ion-content>

@@ -1,0 +1,46 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+  <div class="mainDiv">
+    <!-- Don't forget to remove the (click) action on the title -->
+    <div class="mainDiv__appName" (click)="nextPage()">Odile</div>
+
+    <div class="mainDiv__loader">
+      <div class="water" id="water">
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+        <div class="drop"></div>
+      </div>
+      <div class="waves">
+        <svg viewBox="-50 0 500 150" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+          <path class="st0" d="M499.9,28.3c-150.2-99.6-349.8,100.8-500,1.2l0.2,100l500-1.2L499.9,28.3z" style="stroke: none; fill:#96E6BF;"/>
+        </svg>
+      </div>
+      <div class="waves">
+        <svg viewBox="55 54 500 150" style="enable-background:new 0 0 500 500;" xml:space="preserve">
+          <path class="st0" d="M-0.1,253.9l500,1.7l0.2-140.9C349.9,255,150.3-73,0.1,113L-0.1,253.9z" style="stroke: none; fill:#67D1CD;"/>
+        </svg>
+      </div>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="mainDiv__connexion">Bienvenue, le jeu va<br>bientôt commencer</div>
+    <!-- ON CONNECTION DONE, ADD CLASS "START" TO THE BODY FOR THE ANIMATION-->
+
+    <div class="mainDiv__seagull">
+      <img src="assets/images/mouette.png" alt="">
+    </div>
+  </div>
+</ion-content>
